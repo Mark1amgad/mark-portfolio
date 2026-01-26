@@ -5,7 +5,7 @@ interface Project {
   title: string;
   description: string;
   skills: string[];
-  image?: string;
+  images?: string[];
 }
 
 interface ProjectsSectionProps {
@@ -28,7 +28,7 @@ const ProjectsSection = ({ id, title, subtitle, projects }: ProjectsSectionProps
               title={project.title}
               description={project.description}
               skills={project.skills}
-              image={project.image}
+              images={project.images}
               index={index}
             />
           ))}

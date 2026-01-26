@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [logoHovered, setLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,23 +31,27 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-lg font-bold hover:text-primary transition-colors"
+          onMouseEnter={() => setLogoHovered(true)}
+          onMouseLeave={() => setLogoHovered(false)}
+          className="text-xl font-black transition-colors duration-300"
         >
-          M<span className="gradient-text">A</span>N
+          <span className={`transition-colors duration-300 ${logoHovered ? 'text-primary' : 'text-foreground'}`}>M</span>
+          <span className={`transition-colors duration-300 ${logoHovered ? 'text-foreground' : 'text-primary'}`}>A</span>
+          <span className={`transition-colors duration-300 ${logoHovered ? 'text-primary' : 'text-foreground'}`}>N</span>
         </button>
 
         <div className="hidden md:flex items-center gap-8">
           <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
           <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
-          <NavLink onClick={() => scrollTo("portfolio-link")}>Portfolio</NavLink>
+          <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
         </div>
 
-        <a
-          href="mailto:mark@example.com"
+        <button
+          onClick={() => scrollTo("contact-section")}
           className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
         >
           Get in Touch
-        </a>
+        </button>
       </div>
     </motion.nav>
   );
