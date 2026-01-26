@@ -19,9 +19,9 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <SocialLink href="https://linkedin.com" icon={<Linkedin size={20} />} />
-            <SocialLink href="https://github.com" icon={<Github size={20} />} />
-            <SocialLink href="mailto:mark@example.com" icon={<Mail size={20} />} />
+            <SocialLink href="https://www.linkedin.com/in/markk-amgad" icon={<Linkedin size={20} />} />
+            <SocialLink href="https://github.com/Mark1amgad" icon={<Github size={20} />} />
+            <SocialLink href="mailto:Markbotros52@gmail.com" icon={<Mail size={20} />} />
           </div>
 
           <p className="text-sm text-muted-foreground">

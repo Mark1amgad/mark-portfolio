@@ -1,16 +1,22 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import ProjectImageCarousel from "./ProjectImageCarousel";
+import ProjectMediaCarousel from "./ProjectMediaCarousel";
+
+interface MediaItem {
+  type: "image" | "video";
+  src: string;
+  alt?: string;
+}
 
 interface ProjectCardProps {
   title: string;
   description: string;
   skills: string[];
-  images?: string[];
+  media?: MediaItem[];
   index: number;
 }
 
-const ProjectCard = ({ title, description, skills, images = [], index }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, skills, media = [], index }: ProjectCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -19,9 +25,9 @@ const ProjectCard = ({ title, description, skills, images = [], index }: Project
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group glass-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500"
     >
-      {/* Project Image Carousel */}
+      {/* Project Media Carousel */}
       <div className="relative h-48 bg-muted overflow-hidden">
-        <ProjectImageCarousel images={images} title={title} />
+        <ProjectMediaCarousel media={media} title={title} />
         {/* Overlay on hover */}
         <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>

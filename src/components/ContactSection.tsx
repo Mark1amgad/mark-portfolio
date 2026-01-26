@@ -27,7 +27,7 @@ const ContactSection = () => {
     // Simulate form submission - replace with actual email service integration
     try {
       // For now, open mailto link as fallback
-      const mailtoLink = `mailto:mark@example.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+      const mailtoLink = `mailto:Markbotros52@gmail.com?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
       window.open(mailtoLink, '_blank');
       
       toast({
@@ -76,9 +76,9 @@ const ContactSection = () => {
           >
             <div>
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-              <div className="space-y-4">
+            <div className="space-y-4">
                 <a
-                  href="mailto:mark@example.com"
+                  href="mailto:Markbotros52@gmail.com"
                   className="flex items-center gap-4 p-4 rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group"
                 >
                   <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
@@ -86,12 +86,12 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="text-lg font-semibold">mark@example.com</p>
+                    <p className="text-lg font-semibold">Markbotros52@gmail.com</p>
                   </div>
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/markamgad"
+                  href="https://www.linkedin.com/in/markk-amgad"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group"
@@ -101,12 +101,12 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">LinkedIn</p>
-                    <p className="text-lg font-semibold">linkedin.com/in/markamgad</p>
+                    <p className="text-lg font-semibold">linkedin.com/in/markk-amgad</p>
                   </div>
                 </a>
 
                 <a
-                  href="https://github.com/markamgad"
+                  href="https://github.com/Mark1amgad"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-xl bg-background border border-border hover:border-primary/50 transition-all duration-300 group"
@@ -116,7 +116,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">GitHub</p>
-                    <p className="text-lg font-semibold">github.com/markamgad</p>
+                    <p className="text-lg font-semibold">github.com/Mark1amgad</p>
                   </div>
                 </a>
               </div>
