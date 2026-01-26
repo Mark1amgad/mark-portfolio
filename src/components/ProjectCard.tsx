@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import ProjectImageCarousel from "./ProjectImageCarousel";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   skills: string[];
-  image?: string;
+  images?: string[];
   index: number;
 }
 
-const ProjectCard = ({ title, description, skills, image, index }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, skills, images = [], index }: ProjectCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -18,21 +19,11 @@ const ProjectCard = ({ title, description, skills, image, index }: ProjectCardPr
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group glass-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-500"
     >
-      {/* Project Image */}
+      {/* Project Image Carousel */}
       <div className="relative h-48 bg-muted overflow-hidden">
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary to-muted">
-            <span className="text-4xl font-bold text-muted-foreground/30">{title.charAt(0)}</span>
-          </div>
-        )}
+        <ProjectImageCarousel images={images} title={title} />
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
 
       {/* Content */}

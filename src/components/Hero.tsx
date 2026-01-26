@@ -46,8 +46,9 @@ const Hero = () => {
         delay: 0.3,
         duration: 0.6
       }} className="text-5xl md:text-7xl font-black mb-4 leading-tight">
-          Mark Amgad{" "}
-          <span className="gradient-text">Nassief</span>
+          Mark{" "}
+          <span className="text-primary">Amgad</span>{" "}
+          Nassief
         </motion.h1>
 
         {/* Full name subtitle */}
