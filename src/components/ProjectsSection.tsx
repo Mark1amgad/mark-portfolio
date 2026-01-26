@@ -1,0 +1,41 @@
+import ProjectCard from "./ProjectCard";
+import SectionHeader from "./SectionHeader";
+
+interface Project {
+  title: string;
+  description: string;
+  skills: string[];
+  image?: string;
+}
+
+interface ProjectsSectionProps {
+  id: string;
+  title: string;
+  subtitle: string;
+  projects: Project[];
+}
+
+const ProjectsSection = ({ id, title, subtitle, projects }: ProjectsSectionProps) => {
+  return (
+    <section className="py-20 px-6">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader id={id} title={title} subtitle={subtitle} />
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              title={project.title}
+              description={project.description}
+              skills={project.skills}
+              image={project.image}
+              index={index}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;
