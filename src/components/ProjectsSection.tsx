@@ -1,11 +1,17 @@
 import ProjectCard from "./ProjectCard";
 import SectionHeader from "./SectionHeader";
 
+interface MediaItem {
+  type: "image" | "video";
+  src: string;
+  alt?: string;
+}
+
 interface Project {
   title: string;
   description: string;
   skills: string[];
-  images?: string[];
+  media?: MediaItem[];
 }
 
 interface ProjectsSectionProps {
@@ -28,7 +34,7 @@ const ProjectsSection = ({ id, title, subtitle, projects }: ProjectsSectionProps
               title={project.title}
               description={project.description}
               skills={project.skills}
-              images={project.images}
+              media={project.media}
               index={index}
             />
           ))}
