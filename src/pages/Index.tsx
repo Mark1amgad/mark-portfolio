@@ -18,7 +18,7 @@ import aiSearch4 from "@/assets/ai-search-4.png";
 const universityProjects = [
   {
     title: "Data Structures – Bank Management System",
-    description: "Created a full CRUD banking system with secure login and comprehensive account management functionality using C# in VS Code.",
+    description: "Created a full CRUD banking system with secure login and comprehensive account management functionality using C# in Visual Studio.",
     skills: ["C#", "Data Structures", "CRUD", "VS Code", "File Management"],
     media: [
       { type: "video" as const, src: bankManagementVideo, alt: "Bank Management System Demo" },
