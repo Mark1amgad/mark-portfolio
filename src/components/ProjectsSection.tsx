@@ -12,6 +12,7 @@ interface Project {
   description: string;
   skills: string[];
   media?: MediaItem[];
+  githubUrl?: string;
 }
 
 interface ProjectsSectionProps {
@@ -35,6 +36,7 @@ const ProjectsSection = ({ id, title, subtitle, projects }: ProjectsSectionProps
               description={project.description}
               skills={project.skills}
               media={project.media}
+              githubUrl={project.githubUrl}
               index={index}
             />
           ))}
