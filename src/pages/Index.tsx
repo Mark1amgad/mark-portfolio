@@ -17,44 +17,43 @@ import aiSearch4 from "@/assets/ai-search-4.png";
 
 const universityProjects = [
   {
-    title: "Data Structures – Bank Management System",
-    description: "Created a full CRUD banking system with secure login and comprehensive account management functionality using C# in Visual Studio.",
-    skills: ["C#", "Data Structures", "CRUD", "Visual Studio", "File Management"],
+    title: "Bank Management System – Data Structures Course",
+    description: "A C# Windows Forms Bank Management System for creating and managing customer accounts with validation and different account types (Regular, Savings, Business). It supports user/admin login, deposits, withdrawals, transfers with limits, VIP status for high-balance accounts, and an admin dashboard with key statistics.",
+    skills: ["C#", "Data Structures", "OOP", "Windows Forms", "CRUD", "File Handling", "Linked Lists", "Admin Dashboard", "Validation", "Visual Studio"],
     media: [
       { type: "video" as const, src: bankManagementVideo, alt: "Bank Management System Demo" },
       { type: "image" as const, src: bankUserView, alt: "User View" },
       { type: "image" as const, src: bankAdminAccess, alt: "Admin Access" },
     ],
-    githubUrl: "https://github.com/Mark1amgad/Bank-Management-System",
+    githubUrl: "https://github.com/Mark1amgad/bank-management-system-dsa",
   },
   {
-    title: "Electrical Measurements – Automated Smart Parking System (ASPS)",
-    description: "Developed a dual-Arduino system with sensors and actuators for intelligent parking management and VIP access control.",
-    skills: ["Arduino", "IoT", "Sensors", "Embedded Systems", "C++"],
+    title: "Automated Smart Parking System (ASPS) – Electrical Measurements & Measuring Instruments Course",
+    description: "Hardware-based Automated Smart Parking System using dual Arduino Uno boards to manage entry/exit gates, parking slots, VIP access, and safety alerts with real sensors and actuators. The system uses IR, ultrasonic, RFID, flame, LDR, and buzzer/LCD components to guide drivers, prevent collisions, and support basic safety monitoring.",
+    skills: ["Arduino", "Embedded Systems", "IoT", "Sensor Integration", "C/C++", "Real-Time Systems", "Hardware Prototyping", "Serial Communication"],
     media: [
       { type: "image" as const, src: aspsCircuitDiagram, alt: "Circuit Diagram" },
       { type: "image" as const, src: aspsRealProject, alt: "Real-life Implementation" },
     ],
-    githubUrl: "https://github.com/Mark1amgad/ASPS-Automated-Smart-Parking-System",
+    githubUrl: "https://github.com/Mark1amgad/ASPS-Arduino",
   },
   {
-    title: "Artificial Intelligence – Search Algorithm Simulator",
-    description: "Implemented and visualized BFS, DFS, DLS, UCS, IDS, and Greedy search algorithms in Python for AI course project.",
-    skills: ["Python", "AI", "Search Algorithms", "BFS", "DFS", "Data Visualization"],
+    title: "Search Algorithm Simulator – Artificial Intelligence Course",
+    description: "A Search Algorithm Simulator web app that visualizes and compares classic graph search algorithms (BFS, DFS, DLS, IDS, UCS, Greedy Best-First) on a sample graph representing password search states. Built with Streamlit, it allows users to select the algorithm, goal node, and depth (for DLS), then displays traversal paths, results, metrics, and a tree-style visualization.",
+    skills: ["Python", "Streamlit", "Search Algorithms", "BFS", "DFS", "DLS", "IDS", "UCS", "Greedy Best-First", "Algorithm Visualization"],
     media: [
       { type: "image" as const, src: aiSearch1, alt: "Algorithm Selection" },
       { type: "image" as const, src: aiSearch2, alt: "Algorithm Options" },
       { type: "image" as const, src: aiSearch3, alt: "Search Results" },
       { type: "image" as const, src: aiSearch4, alt: "Tree Graph Visualization" },
     ],
-    githubUrl: "https://github.com/Mark1amgad/AI-Search-Algorithm-Simulator",
+    githubUrl: "https://github.com/Mark1amgad/search-algorithm-simulator",
   },
   {
-    title: "Engineering Drawing – AutoCAD",
-    description: "Created detailed orthographic and isometric drawings including top/front/side views, hatching techniques, and hidden line representations using AutoCAD.",
-    skills: ["AutoCAD", "Technical Drawing", "Orthographic Projection", "Isometric Views"],
+    title: "AutoCAD Drawings – Engineering Drawing Course",
+    description: "Technical engineering drawings created in AutoCAD, including orthographic projections (top, front, and side views with hatching, hidden lines, and proper alignment) and isometric 3D drawings of mechanical components. Demonstrates proficiency in spatial visualization, dimensioning, and CAD standards.",
+    skills: ["AutoCAD", "Orthographic Projection", "Isometric Drawing", "Technical Drawing", "Dimensioning", "Hatching", "2D/3D Visualization"],
     media: [],
-    // No GitHub for AutoCAD drawings
   },
   {
     title: "Object-Oriented Programming – Library Management System",
