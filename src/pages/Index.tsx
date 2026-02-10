@@ -14,6 +14,8 @@ import aiSearch1 from "@/assets/ai-search-1.png";
 import aiSearch2 from "@/assets/ai-search-2.png";
 import aiSearch3 from "@/assets/ai-search-3.png";
 import aiSearch4 from "@/assets/ai-search-4.png";
+import bookstoreManagement from "@/assets/bookstore-management.png";
+import bookstoreClassDiagram from "@/assets/bookstore-class-diagram.jpeg";
 
 const universityProjects = [
   {
@@ -56,11 +58,14 @@ const universityProjects = [
     media: [],
   },
   {
-    title: "Object-Oriented Programming – Library Management System",
-    description: "Built a comprehensive library management system implementing Enums, Interfaces, Inheritance, and Polymorphism with full CRUD operations on text files.",
-    skills: ["OOP", "C#", "Interfaces", "Inheritance", "File I/O"],
-    media: [],
-    githubUrl: "https://github.com/Mark1amgad/Library-Management-System",
+    title: "Bookstore Management System – Object-Oriented Programming Course",
+    description: "An advanced C# desktop application featuring a custom-engineered dark mode interface. The project utilizes high-level Object-Oriented architecture, implementing a repository pattern for persistent data management while bypassing standard legacy frameworks to deliver a modern, glassmorphism-inspired user experience.",
+    skills: ["C#", ".NET 10", "WinForms", "OOP Architecture", "Interface Abstraction", "Inheritance", "Encapsulation", "Enums", "Data Binding", "File Persistence", "GDI+ UI Design", "Win32 Interop"],
+    media: [
+      { type: "image" as const, src: bookstoreManagement, alt: "Bookstore Management Interface" },
+      { type: "image" as const, src: bookstoreClassDiagram, alt: "Class Diagram" },
+    ],
+    githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop/tree/main",
   },
 ];
 
