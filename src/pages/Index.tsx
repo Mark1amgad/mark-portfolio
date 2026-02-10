@@ -67,45 +67,37 @@ const universityProjects = [
 const externalProjects = [
   {
     title: "Prompt Understanding Test – AI Model Evaluation Web App",
-    description: "Built a web application using Hugging Face, Gradio, and Python to evaluate LLM response understanding and quality.",
-    skills: ["Python", "Hugging Face", "Gradio", "LLM", "AI Evaluation"],
+    description: "An interactive web application that evaluates how well Large Language Models (LLMs) understand user prompts. Users input a prompt, which is sent to LLMs via Hugging Face, and the app analyzes the response using Sentence Transformers and Cosine Similarity to measure understanding accuracy. Features include response evaluation scores, similarity metrics, formatting checks, and a visual progress bar. Developed as a graduation project for the AI Ambassadors Program (Batch 6).",
+    skills: ["Python", "Gradio", "Hugging Face API", "Sentence Transformers", "Cosine Similarity", "LLM Evaluation", "NLP", "AI Model Testing"],
     media: [],
-    githubUrl: "https://github.com/Mark1amgad/Prompt-Understanding-Test",
+    externalUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
+    externalLabel: "Live App",
   },
   {
     title: "Flash Reservation & Sales Website with Database",
-    description: "Developed a student booking system with database integration for reservations and sales management.",
-    skills: ["Web Development", "Database", "Booking System", "Full Stack"],
+    description: "A lightweight web application built to organize bulk flash drive orders for students. Users select flash drive capacity, enter contact details, and submit requests that are automatically stored in Firebase. Features include a responsive design for all devices and an admin panel for reviewing and exporting orders. The system successfully streamlined order collection and reduced coordination time.",
+    skills: ["HTML", "CSS", "JavaScript", "Firebase Hosting", "Firebase Realtime Database", "Responsive Design", "Admin Panel"],
     media: [],
-    githubUrl: "https://github.com/Mark1amgad/Flash-Reservation-Website",
+    githubUrl: "https://github.com/Mark1amgad/flashdrive-shop-db",
   },
   {
     title: "Power BI Dashboard for Company Data",
-    description: "Designed and developed interactive Power BI dashboards for company data visualization and business intelligence.",
-    skills: ["Power BI", "Data Visualization", "Business Intelligence", "DAX"],
+    description: "A comprehensive Power BI analytics solution developed for a retail enterprise to evaluate financial performance across multiple dimensions. Raw sales data was transformed into a star-schema model to track Total Sales, Total Profit, and Profit Margin (2016–2019). The dashboard uses dynamic filtering and category-based distribution analysis to identify high-performing product segments and optimize channel strategy, providing actionable insights into profitability trends.",
+    skills: ["Power BI", "DAX", "Data Modeling", "Star Schema", "Power Query", "ETL", "Trend Analysis", "Dashboard Design", "KPI Tracking", "Data Visualization"],
     media: [],
-    // No GitHub for Power BI
   },
   {
     title: "Excel Dashboard – Data Analysis Lifecycle with KPIs & Insights",
     description: "Built comprehensive Excel dashboards covering the full data analysis lifecycle with KPIs and actionable insights.",
     skills: ["Excel", "Data Analysis", "KPIs", "Dashboard Design", "Visualization"],
     media: [],
-    // No GitHub for Excel
   },
   {
     title: "Weekly Expense Tracking Website",
-    description: "Created an intuitive expense tracking web application for personal finance management with data visualization.",
-    skills: ["JavaScript", "Web Development", "Data Visualization", "UI/UX"],
+    description: "A mobile-responsive Weekly Expense Tracker featuring real-time budget analytics and a dual-language (Arabic/English) interface. The application enables users to manage pocket money through automated daily and weekly totals, remaining balance tracking, and data export options such as CSV and JSON.",
+    skills: ["HTML5", "CSS3", "JavaScript", "RTL Layouts", "Local Storage", "JSON", "CSV", "UI/UX Design", "Responsive Design"],
     media: [],
-    githubUrl: "https://github.com/Mark1amgad/Weekly-Expense-Tracker",
-  },
-  {
-    title: "Multiple Freelancing Gigs",
-    description: "Completed multiple freelancing gigs including web development, data analysis, and automation tasks for various clients.",
-    skills: ["Freelancing", "Client Communication", "Web Dev", "Data Analysis"],
-    media: [],
-    // No GitHub for freelancing gigs
+    githubUrl: "https://github.com/Mark1amgad/expense-tracker",
   },
 ];
 
