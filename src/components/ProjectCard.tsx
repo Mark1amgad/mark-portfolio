@@ -14,10 +14,12 @@ interface ProjectCardProps {
   skills: string[];
   media?: MediaItem[];
   githubUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
   index: number;
 }
 
-const ProjectCard = ({ title, description, skills, media = [], githubUrl, index }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, skills, media = [], githubUrl, externalUrl, externalLabel, index }: ProjectCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Get the main (first) media item for the poster
@@ -110,6 +112,8 @@ const ProjectCard = ({ title, description, skills, media = [], githubUrl, index 
         skills={skills}
         media={media}
         githubUrl={githubUrl}
+        externalUrl={externalUrl}
+        externalLabel={externalLabel}
       />
     </>
   );

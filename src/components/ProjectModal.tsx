@@ -17,6 +17,8 @@ interface ProjectModalProps {
   skills: string[];
   media: MediaItem[];
   githubUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
 }
 
 const ProjectModal = ({
@@ -27,6 +29,8 @@ const ProjectModal = ({
   skills,
   media,
   githubUrl,
+  externalUrl,
+  externalLabel,
 }: ProjectModalProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -186,19 +190,33 @@ const ProjectModal = ({
             ))}
           </div>
 
-          {/* GitHub Link */}
-          {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
-            >
-              <Github size={20} />
-              View on GitHub
-              <ExternalLink size={16} />
-            </a>
-          )}
+          {/* Project Links */}
+          <div className="flex flex-wrap gap-3">
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
+              >
+                <Github size={20} />
+                View on GitHub
+                <ExternalLink size={16} />
+              </a>
+            )}
+            {externalUrl && (
+              <a
+                href={externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
+              >
+                <ExternalLink size={20} />
+                {externalLabel || "Live App"}
+                <ExternalLink size={16} />
+              </a>
+            )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

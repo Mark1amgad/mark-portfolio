@@ -13,6 +13,8 @@ interface Project {
   skills: string[];
   media?: MediaItem[];
   githubUrl?: string;
+  externalUrl?: string;
+  externalLabel?: string;
 }
 
 interface ProjectsSectionProps {
@@ -37,6 +39,8 @@ const ProjectsSection = ({ id, title, subtitle, projects }: ProjectsSectionProps
               skills={project.skills}
               media={project.media}
               githubUrl={project.githubUrl}
+              externalUrl={project.externalUrl}
+              externalLabel={project.externalLabel}
               index={index}
             />
           ))}
