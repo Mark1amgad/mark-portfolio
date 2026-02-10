@@ -61,12 +61,6 @@ const ProjectCard = ({ title, description, skills, media = [], githubUrl, index 
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
           
-          {/* Media count indicator */}
-          {media.length > 1 && (
-            <div className="absolute top-3 right-3 px-2 py-1 bg-background/80 backdrop-blur-sm rounded-md text-xs font-medium text-foreground">
-              {media.length} {media.some(m => m.type === "video") ? "items" : "images"}
-            </div>
-          )}
           
           {/* Click to view indicator */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
