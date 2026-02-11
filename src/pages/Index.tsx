@@ -18,6 +18,10 @@ import aiSearch3 from "@/assets/ai-search-3.png";
 import aiSearch4 from "@/assets/ai-search-4.png";
 import bookstoreManagement from "@/assets/bookstore-management.png";
 import bookstoreClassDiagram from "@/assets/bookstore-class-diagram.jpeg";
+import autocadDrawing1 from "@/assets/autocad-drawing-1.png";
+import autocadDrawing2 from "@/assets/autocad-drawing-2.png";
+import autocadDrawing3 from "@/assets/autocad-drawing-3.png";
+import autocadDrawing4 from "@/assets/autocad-drawing-4.png";
 
 const universityProjects = [
   {
@@ -70,7 +74,12 @@ const universityProjects = [
     title: "AutoCAD Drawings – Engineering Drawing Course",
     description: "Technical engineering drawings created in AutoCAD, including orthographic projections (top, front, and side views with hatching, hidden lines, and proper alignment) and isometric 3D drawings of mechanical components. Demonstrates proficiency in spatial visualization, dimensioning, and CAD standards.",
     skills: ["AutoCAD", "Orthographic Projection", "Isometric Drawing", "Technical Drawing", "Dimensioning", "Hatching", "2D/3D Visualization"],
-    media: [],
+    media: [
+      { type: "image" as const, src: autocadDrawing1, alt: "Orthographic Projection Drawing" },
+      { type: "image" as const, src: autocadDrawing2, alt: "Isometric 3D Drawings" },
+      { type: "image" as const, src: autocadDrawing3, alt: "Orthographic with Hatching" },
+      { type: "image" as const, src: autocadDrawing4, alt: "Orthographic Projection with Hidden Lines" },
+    ],
   },
 ];
 
