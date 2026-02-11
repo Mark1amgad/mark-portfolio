@@ -8,8 +8,10 @@ import Footer from "@/components/Footer";
 import bankManagementVideo from "@/assets/bank-management-video.mp4";
 import bankUserView from "@/assets/bank-user-view.png";
 import bankAdminAccess from "@/assets/bank-admin-access.png";
-import aspsCircuitDiagram from "@/assets/asps-circuit-diagram.png";
-import aspsRealProject from "@/assets/asps-real-project.jpeg";
+import aspsCover from "@/assets/asps-cover.png";
+import aspsHardware1 from "@/assets/asps-hardware-1.jpeg";
+import aspsHardware2 from "@/assets/asps-hardware-2.jpeg";
+import aspsCircuitDiagramNew from "@/assets/asps-circuit-diagram-new.jpeg";
 import aiSearch1 from "@/assets/ai-search-1.png";
 import aiSearch2 from "@/assets/ai-search-2.png";
 import aiSearch3 from "@/assets/ai-search-3.png";
@@ -30,14 +32,27 @@ const universityProjects = [
     githubUrl: "https://github.com/Mark1amgad/bank-management-system-dsa",
   },
   {
+    title: "Bookstore Management System – Object-Oriented Programming Course",
+    description: "An advanced C# desktop application featuring a custom-engineered dark mode interface. The project utilizes high-level Object-Oriented architecture, implementing a repository pattern for persistent data management while bypassing standard legacy frameworks to deliver a modern, glassmorphism-inspired user experience.",
+    skills: ["C#", ".NET 10", "WinForms", "OOP Architecture", "Interface Abstraction", "Inheritance", "Encapsulation", "Enums", "Data Binding", "File Persistence", "GDI+ UI Design", "Win32 Interop"],
+    media: [
+      { type: "image" as const, src: bookstoreManagement, alt: "Bookstore Management Interface" },
+      { type: "image" as const, src: bookstoreClassDiagram, alt: "Class Diagram" },
+    ],
+    githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop/tree/main",
+  },
+  {
     title: "Automated Smart Parking System (ASPS) – Electrical Measurements & Measuring Instruments Course",
     description: "Hardware-based Automated Smart Parking System using dual Arduino Uno boards to manage entry/exit gates, parking slots, VIP access, and safety alerts with real sensors and actuators. The system uses IR, ultrasonic, RFID, flame, LDR, and buzzer/LCD components to guide drivers, prevent collisions, and support basic safety monitoring.",
     skills: ["Arduino", "Embedded Systems", "IoT", "Sensor Integration", "C/C++", "Real-Time Systems", "Hardware Prototyping", "Serial Communication"],
     media: [
-      { type: "image" as const, src: aspsCircuitDiagram, alt: "Circuit Diagram" },
-      { type: "image" as const, src: aspsRealProject, alt: "Real-life Implementation" },
+      { type: "image" as const, src: aspsCover, alt: "ASPS Cover" },
+      { type: "image" as const, src: aspsHardware1, alt: "Hardware Implementation 1" },
+      { type: "image" as const, src: aspsHardware2, alt: "Hardware Implementation 2" },
+      { type: "image" as const, src: aspsCircuitDiagramNew, alt: "Circuit Diagram" },
     ],
-    githubUrl: "https://github.com/Mark1amgad/ASPS-Arduino",
+    externalUrl: "https://easy-park-tech.lovable.app",
+    externalLabel: "Live App",
   },
   {
     title: "Search Algorithm Simulator – Artificial Intelligence Course",
@@ -56,16 +71,6 @@ const universityProjects = [
     description: "Technical engineering drawings created in AutoCAD, including orthographic projections (top, front, and side views with hatching, hidden lines, and proper alignment) and isometric 3D drawings of mechanical components. Demonstrates proficiency in spatial visualization, dimensioning, and CAD standards.",
     skills: ["AutoCAD", "Orthographic Projection", "Isometric Drawing", "Technical Drawing", "Dimensioning", "Hatching", "2D/3D Visualization"],
     media: [],
-  },
-  {
-    title: "Bookstore Management System – Object-Oriented Programming Course",
-    description: "An advanced C# desktop application featuring a custom-engineered dark mode interface. The project utilizes high-level Object-Oriented architecture, implementing a repository pattern for persistent data management while bypassing standard legacy frameworks to deliver a modern, glassmorphism-inspired user experience.",
-    skills: ["C#", ".NET 10", "WinForms", "OOP Architecture", "Interface Abstraction", "Inheritance", "Encapsulation", "Enums", "Data Binding", "File Persistence", "GDI+ UI Design", "Win32 Interop"],
-    media: [
-      { type: "image" as const, src: bookstoreManagement, alt: "Bookstore Management Interface" },
-      { type: "image" as const, src: bookstoreClassDiagram, alt: "Class Diagram" },
-    ],
-    githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop/tree/main",
   },
 ];
 
