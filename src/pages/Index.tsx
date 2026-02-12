@@ -130,6 +130,8 @@ const externalProjects = [
       { type: "image" as const, src: excelDashboard2, alt: "Product Analysis Dashboard" },
       { type: "image" as const, src: excelDashboard3, alt: "Sales Analytics Dashboard" },
     ],
+    externalUrl: "/files/Datahaive.xlsx",
+    externalLabel: "Download Project",
   },
   {
     title: "Weekly Expense Tracking Website",
