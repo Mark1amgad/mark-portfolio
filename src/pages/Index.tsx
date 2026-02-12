@@ -22,6 +22,9 @@ import autocadDrawing1 from "@/assets/autocad-drawing-1.png";
 import autocadDrawing2 from "@/assets/autocad-drawing-2.png";
 import autocadDrawing3 from "@/assets/autocad-drawing-3.png";
 import autocadDrawing4 from "@/assets/autocad-drawing-4.png";
+import excelDashboard1 from "@/assets/excel-dashboard-1.png";
+import excelDashboard2 from "@/assets/excel-dashboard-2.png";
+import excelDashboard3 from "@/assets/excel-dashboard-3.png";
 
 const universityProjects = [
   {
@@ -106,10 +109,14 @@ const externalProjects = [
     media: [],
   },
   {
-    title: "Excel Dashboard – Data Analysis Lifecycle with KPIs & Insights",
-    description: "Built comprehensive Excel dashboards covering the full data analysis lifecycle with KPIs and actionable insights.",
-    skills: ["Excel", "Data Analysis", "KPIs", "Dashboard Design", "Visualization"],
-    media: [],
+    title: "Excel Sales Analytics Dashboard – Data Analysis Project",
+    description: "A structured Excel data analysis project applying the full analytical workflow: defining smart business questions, cleaning and validating data (nulls, duplicates, inconsistencies), transforming date and financial fields, and building pivot-driven summary layers. Implemented advanced Excel techniques including Pivot Tables, SUMIFS, calculated fields, percentage-of-total analysis, and slicer-based interactivity to design a dynamic KPI dashboard focused on business decision support.",
+    skills: ["Microsoft Excel", "Pivot Tables", "Data Cleaning", "Data Transformation", "KPI Modeling", "SUMIFS", "Calculated Fields", "Percentage Analysis", "Dashboard Design", "Slicers", "Time-Series Analysis", "Business Intelligence"],
+    media: [
+      { type: "image" as const, src: excelDashboard1, alt: "DataHive Dashboard Cover" },
+      { type: "image" as const, src: excelDashboard2, alt: "Product Analysis Dashboard" },
+      { type: "image" as const, src: excelDashboard3, alt: "Sales Analytics Dashboard" },
+    ],
   },
   {
     title: "Weekly Expense Tracking Website",
