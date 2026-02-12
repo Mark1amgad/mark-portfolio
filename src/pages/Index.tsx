@@ -110,9 +110,9 @@ const externalProjects = [
     description: "A comprehensive Power BI analytics solution developed for a retail enterprise to evaluate financial performance across multiple dimensions. Raw sales data was transformed into a star-schema model to track Total Sales, Total Profit, and Profit Margin (2016–2019). The dashboard uses dynamic filtering and category-based distribution analysis to identify high-performing product segments and optimize channel strategy, providing actionable insights into profitability trends.",
     skills: ["Power BI", "DAX", "Data Modeling", "Star Schema", "Power Query", "ETL", "Trend Analysis", "Dashboard Design", "KPI Tracking", "Data Visualization"],
     media: [
-      { type: "image" as const, src: powerbiDataTable, alt: "Company Data Table" },
-      { type: "image" as const, src: powerbiDataModel, alt: "Data Model Schema" },
       { type: "image" as const, src: powerbiDashboard, alt: "Power BI Dashboard" },
+      { type: "image" as const, src: powerbiDataModel, alt: "Data Model Schema" },
+      { type: "image" as const, src: powerbiDataTable, alt: "Company Data Table" },
     ],
     externalUrl: "/files/company_profit_dashboard.pbix",
     externalLabel: "Download Project",
