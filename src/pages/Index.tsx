@@ -141,6 +141,7 @@ const externalProjects = [
       { type: "image" as const, src: expenseTracker3, alt: "Light Mode - Arabic Interface" },
       { type: "image" as const, src: expenseTracker4, alt: "Light Mode - Arabic Export Options" },
     ],
+    githubUrl: "https://github.com/Mark1amgad/expense-tracker/tree/main",
   },
 ];
 
