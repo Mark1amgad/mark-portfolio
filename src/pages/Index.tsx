@@ -28,6 +28,10 @@ import excelDashboard3 from "@/assets/excel-dashboard-3.png";
 import powerbiDataTable from "@/assets/powerbi-data-table.png";
 import powerbiDataModel from "@/assets/powerbi-data-model.png";
 import powerbiDashboard from "@/assets/powerbi-dashboard.png";
+import expenseTracker1 from "@/assets/expense-tracker-1.png";
+import expenseTracker2 from "@/assets/expense-tracker-2.png";
+import expenseTracker3 from "@/assets/expense-tracker-3.png";
+import expenseTracker4 from "@/assets/expense-tracker-4.png";
 
 const universityProjects = [
   {
@@ -131,8 +135,12 @@ const externalProjects = [
     title: "Weekly Expense Tracking Website",
     description: "A mobile-responsive Weekly Expense Tracker featuring real-time budget analytics and a dual-language (Arabic/English) interface. The application enables users to manage pocket money through automated daily and weekly totals, remaining balance tracking, and data export options such as CSV and JSON.",
     skills: ["HTML5", "CSS3", "JavaScript", "RTL Layouts", "Local Storage", "JSON", "CSV", "UI/UX Design", "Responsive Design"],
-    media: [],
-    githubUrl: "https://github.com/Mark1amgad/expense-tracker",
+    media: [
+      { type: "image" as const, src: expenseTracker1, alt: "Dark Mode - English Interface" },
+      { type: "image" as const, src: expenseTracker2, alt: "Dark Mode - Categories & Export" },
+      { type: "image" as const, src: expenseTracker3, alt: "Light Mode - Arabic Interface" },
+      { type: "image" as const, src: expenseTracker4, alt: "Light Mode - Arabic Export Options" },
+    ],
   },
 ];
 
