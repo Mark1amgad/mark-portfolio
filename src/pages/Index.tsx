@@ -25,6 +25,9 @@ import autocadDrawing4 from "@/assets/autocad-drawing-4.png";
 import excelDashboard1 from "@/assets/excel-dashboard-1.png";
 import excelDashboard2 from "@/assets/excel-dashboard-2.png";
 import excelDashboard3 from "@/assets/excel-dashboard-3.png";
+import powerbiDataTable from "@/assets/powerbi-data-table.png";
+import powerbiDataModel from "@/assets/powerbi-data-model.png";
+import powerbiDashboard from "@/assets/powerbi-dashboard.png";
 
 const universityProjects = [
   {
@@ -106,7 +109,13 @@ const externalProjects = [
     title: "Power BI Dashboard for Company Data",
     description: "A comprehensive Power BI analytics solution developed for a retail enterprise to evaluate financial performance across multiple dimensions. Raw sales data was transformed into a star-schema model to track Total Sales, Total Profit, and Profit Margin (2016–2019). The dashboard uses dynamic filtering and category-based distribution analysis to identify high-performing product segments and optimize channel strategy, providing actionable insights into profitability trends.",
     skills: ["Power BI", "DAX", "Data Modeling", "Star Schema", "Power Query", "ETL", "Trend Analysis", "Dashboard Design", "KPI Tracking", "Data Visualization"],
-    media: [],
+    media: [
+      { type: "image" as const, src: powerbiDataTable, alt: "Company Data Table" },
+      { type: "image" as const, src: powerbiDataModel, alt: "Data Model Schema" },
+      { type: "image" as const, src: powerbiDashboard, alt: "Power BI Dashboard" },
+    ],
+    externalUrl: "/files/company_profit_dashboard.pbix",
+    externalLabel: "Download Project",
   },
   {
     title: "Excel Sales Analytics Dashboard – Data Analysis Project",
