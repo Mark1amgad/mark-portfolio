@@ -114,8 +114,7 @@ const externalProjects = [
       { type: "image" as const, src: promptTest3, alt: "Evaluation Score" },
       { type: "image" as const, src: promptTest4, alt: "Detailed Analysis" },
     ],
-    externalUrl: "/open-prompt-test",
-    externalLabel: "Live App",
+    githubUrl: "https://github.com/Mark1amgad/prompt-understanding-test/tree/main",
   },
   {
     title: "Flash Reservation & Sales Website with Database",
