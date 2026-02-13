@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const OpenPromptTest = () => {
   useEffect(() => {
-    window.location.replace("https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test");
+    window.location.replace("https://hf.space/embed/Mark1amgad/prompt-understanding-test/+");
   }, []);
 
   return (
