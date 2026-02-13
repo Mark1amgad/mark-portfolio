@@ -208,7 +208,7 @@ const ProjectModal = ({
               <a
                 href={externalUrl}
                 target={externalUrl.startsWith("/files/") ? "_self" : "_blank"}
-                rel="noopener noreferrer"
+                rel={externalUrl.startsWith("/files/") ? undefined : "noopener"}
                 download={externalUrl.startsWith("/files/") ? true : undefined}
                 className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
               >

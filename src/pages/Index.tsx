@@ -6,6 +6,10 @@ import Footer from "@/components/Footer";
 
 // Import media assets
 import bankManagementVideo from "@/assets/bank-management-video.mp4";
+import promptTest1 from "@/assets/prompt-test-1.png";
+import promptTest2 from "@/assets/prompt-test-2.png";
+import promptTest3 from "@/assets/prompt-test-3.png";
+import promptTest4 from "@/assets/prompt-test-4.png";
 import bankUserView from "@/assets/bank-user-view.png";
 import bankAdminAccess from "@/assets/bank-admin-access.png";
 import aspsCover from "@/assets/asps-cover.png";
@@ -104,7 +108,12 @@ const externalProjects = [
     title: "Prompt Understanding Test – AI Model Evaluation Web App",
     description: "An interactive web application that evaluates how well Large Language Models (LLMs) understand user prompts. Users input a prompt, which is sent to LLMs via Hugging Face, and the app analyzes the response using Sentence Transformers and Cosine Similarity to measure understanding accuracy. Features include response evaluation scores, similarity metrics, formatting checks, and a visual progress bar. Developed as a graduation project for the AI Ambassadors Program (Batch 6).",
     skills: ["Python", "Gradio", "Hugging Face API", "Sentence Transformers", "Cosine Similarity", "LLM Evaluation", "NLP", "AI Model Testing"],
-    media: [],
+    media: [
+      { type: "image" as const, src: promptTest1, alt: "Prompt Understanding Test - Main Interface" },
+      { type: "image" as const, src: promptTest2, alt: "Model Response Output" },
+      { type: "image" as const, src: promptTest3, alt: "Evaluation Score" },
+      { type: "image" as const, src: promptTest4, alt: "Detailed Analysis" },
+    ],
     externalUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
     externalLabel: "Live App",
   },
