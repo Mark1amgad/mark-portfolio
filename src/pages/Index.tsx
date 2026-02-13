@@ -32,6 +32,12 @@ import expenseTracker1 from "@/assets/expense-tracker-1.png";
 import expenseTracker2 from "@/assets/expense-tracker-2.png";
 import expenseTracker3 from "@/assets/expense-tracker-3.png";
 import expenseTracker4 from "@/assets/expense-tracker-4.png";
+import flashDrive1 from "@/assets/flash-drive-1.png";
+import flashDrive2 from "@/assets/flash-drive-2.png";
+import flashDrive3 from "@/assets/flash-drive-3.png";
+import flashDrive4 from "@/assets/flash-drive-4.png";
+import flashDrive5 from "@/assets/flash-drive-5.png";
+import flashDrive6 from "@/assets/flash-drive-6.png";
 
 const universityProjects = [
   {
@@ -106,7 +112,14 @@ const externalProjects = [
     title: "Flash Reservation & Sales Website with Database",
     description: "A lightweight web application built to organize bulk flash drive orders for students. Users select flash drive capacity, enter contact details, and submit requests that are automatically stored in Firebase. Features include a responsive design for all devices and an admin panel for reviewing and exporting orders. The system successfully streamlined order collection and reduced coordination time.",
     skills: ["HTML", "CSS", "JavaScript", "Firebase Hosting", "Firebase Realtime Database", "Responsive Design", "Admin Panel"],
-    media: [],
+    media: [
+      { type: "image" as const, src: flashDrive1, alt: "Product Page - Flash Drive Collection" },
+      { type: "image" as const, src: flashDrive2, alt: "Purchase Modal" },
+      { type: "image" as const, src: flashDrive3, alt: "Admin Dashboard - Overview" },
+      { type: "image" as const, src: flashDrive4, alt: "Admin Dashboard - Product Management" },
+      { type: "image" as const, src: flashDrive5, alt: "Admin Dashboard - Purchase History" },
+      { type: "image" as const, src: flashDrive6, alt: "Admin Login Page" },
+    ],
     githubUrl: "https://github.com/Mark1amgad/flashdrive-shop-db",
   },
   {
