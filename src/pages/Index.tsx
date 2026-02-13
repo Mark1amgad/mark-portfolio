@@ -114,7 +114,7 @@ const externalProjects = [
       { type: "image" as const, src: promptTest3, alt: "Evaluation Score" },
       { type: "image" as const, src: promptTest4, alt: "Detailed Analysis" },
     ],
-    externalUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
+    externalUrl: "/open-prompt-test",
     externalLabel: "Live App",
   },
   {
