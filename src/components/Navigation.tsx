@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +17,7 @@ const Navigation = () => {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
 
   return (
@@ -48,11 +51,43 @@ const Navigation = () => {
 
         <button
           onClick={() => scrollTo("contact-section")}
-          className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+          className="hidden md:block px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
         >
           Get in Touch
         </button>
+
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden p-2 text-foreground"
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-lg border-b border-border"
+          >
+            <div className="flex flex-col items-center gap-4 py-6">
+              <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
+              <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
+              <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
+              <button
+                onClick={() => scrollTo("contact-section")}
+                className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+              >
+                Get in Touch
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
