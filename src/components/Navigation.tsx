@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -26,14 +26,14 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "bg-background/80 backdrop-blur-lg border-b border-border" 
+        scrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileOpen(false); }}
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
           className="text-xl font-black transition-colors duration-300"
@@ -57,37 +57,33 @@ const Navigation = () => {
         </button>
 
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-foreground"
+          type="button"
+          onClick={() => setMobileOpen((prev) => !prev)}
+          className="md:hidden p-2 text-foreground z-[60]"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-background/95 backdrop-blur-lg border-b border-border"
+      {/* Mobile menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        } bg-background/95 backdrop-blur-lg border-b border-border`}
+      >
+        <div className="flex flex-col items-center gap-4 py-6">
+          <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
+          <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
+          <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
+          <button
+            onClick={() => scrollTo("contact-section")}
+            className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
           >
-            <div className="flex flex-col items-center gap-4 py-6">
-              <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
-              <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
-              <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
-              <button
-                onClick={() => scrollTo("contact-section")}
-                className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
-              >
-                Get in Touch
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Get in Touch
+          </button>
+        </div>
+      </div>
     </motion.nav>
   );
 };
