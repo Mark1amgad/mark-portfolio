@@ -44,6 +44,7 @@ const Navigation = () => {
         </button>
 
         <div className="hidden md:flex items-center gap-8">
+          <NavLink onClick={() => scrollTo("about-section")}>About</NavLink>
           <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
           <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
           <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
@@ -73,6 +74,7 @@ const Navigation = () => {
         } bg-background/95 backdrop-blur-lg border-b border-border`}
       >
         <div className="flex flex-col items-center gap-4 py-6">
+          <NavLink onClick={() => scrollTo("about-section")}>About</NavLink>
           <NavLink onClick={() => scrollTo("university-projects")}>University</NavLink>
           <NavLink onClick={() => scrollTo("external-projects")}>External</NavLink>
           <NavLink onClick={() => scrollTo("contact-section")}>Contact</NavLink>
