@@ -4,35 +4,27 @@ interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   id?: string;
+  index?: string;
+  eyebrow?: string;
 }
 
-const SectionHeader = ({ title, subtitle, id }: SectionHeaderProps) => {
+const SectionHeader = ({ title, subtitle, id, index, eyebrow }: SectionHeaderProps) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className="text-center mb-16"
+      className="mb-12"
       id={id}
     >
-      <h2 className="text-3xl md:text-4xl font-bold mb-4">
-        {title.split(" ").map((word, idx) => (
-          <span key={idx}>
-            {idx === title.split(" ").length - 1 ? (
-              <span className="gradient-text">{word}</span>
-            ) : (
-              word + " "
-            )}
-          </span>
-        ))}
+      <div className="section-label mb-3">{index ? `${index} / ` : ""}{eyebrow || title}</div>
+      <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight max-w-3xl">
+        {title}
       </h2>
       {subtitle && (
-        <p className="text-muted-foreground max-w-xl mx-auto">
-          {subtitle}
-        </p>
+        <p className="text-muted-foreground max-w-2xl mt-3 leading-relaxed">{subtitle}</p>
       )}
-      <div className="w-20 h-1 bg-gradient-to-r from-primary to-primary/50 mx-auto mt-6 rounded-full" />
     </motion.div>
   );
 };

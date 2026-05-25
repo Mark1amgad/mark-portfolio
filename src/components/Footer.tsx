@@ -1,43 +1,41 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+
 const Footer = () => {
-  return <footer id="portfolio-link" className="relative py-20 px-6">
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        
-
-        {/* Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent mb-12" />
-
-        {/* Bottom section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold mb-1">Mark Amgad Nassief</h3>
-            <p className="text-sm text-muted-foreground">AI Engineering Student</p>
+  return (
+    <footer className="relative border-t border-border/60 py-12 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="text-center md:text-left">
+          <div className="font-display font-semibold">Mark Amgad Nassief</div>
+          <div className="text-xs font-mono text-muted-foreground mt-1">
+            AI Engineering Student · New Mansoura University
           </div>
-
-          <div className="flex items-center gap-4">
-            <SocialLink href="https://www.linkedin.com/in/markk-amgad" icon={<Linkedin size={20} />} />
-            <SocialLink href="https://github.com/Mark1amgad" icon={<Github size={20} />} />
-            <SocialLink href="mailto:Markbotros52@gmail.com" icon={<Mail size={20} />} />
-          </div>
-
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} All rights reserved.
-          </p>
         </div>
+
+        <div className="flex items-center gap-3">
+          <SocialLink href="https://github.com/Mark1amgad" icon={<Github size={16} />} label="GitHub" />
+          <SocialLink href="https://www.linkedin.com/in/markk-amgad" icon={<Linkedin size={16} />} label="LinkedIn" />
+          <SocialLink href="mailto:Markbotros52@gmail.com" icon={<Mail size={16} />} label="Email" />
+        </div>
+
+        <p className="text-xs font-mono text-muted-foreground">
+          © {new Date().getFullYear()} — built with care.
+        </p>
       </div>
-    </footer>;
+    </footer>
+  );
 };
-const SocialLink = ({
-  href,
-  icon
-}: {
-  href: string;
-  icon: React.ReactNode;
-}) => <a href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-all duration-300">
+
+const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label}
+    className="w-9 h-9 rounded-md border border-border bg-secondary/50 hover:border-primary/40 hover:text-primary flex items-center justify-center text-muted-foreground transition-all"
+  >
     {icon}
-  </a>;
+  </a>
+);
+
 export default Footer;

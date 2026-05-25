@@ -1,107 +1,102 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Linkedin, Globe, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Download, ArrowRight } from "lucide-react";
+
 const Hero = () => {
-  const scrollToProjects = () => {
-    document.getElementById("university-projects")?.scrollIntoView({
-      behavior: "smooth"
-    });
-  };
-  return <section className="min-h-screen flex flex-col justify-center items-center relative px-6 py-20">
-      {/* Background glow effect */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
-      
-      <motion.div initial={{
-      opacity: 0,
-      y: 30
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 0.8,
-      ease: "easeOut"
-    }} className="text-center max-w-4xl relative z-10">
-        {/* Status badge */}
-        <motion.div initial={{
-        opacity: 0,
-        scale: 0.9
-      }} animate={{
-        opacity: 1,
-        scale: 1
-      }} transition={{
-        delay: 0.2,
-        duration: 0.5
-      }} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8">
-          <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
-          <span className="text-sm text-muted-foreground">Available for opportunities</span>
+  return (
+    <section className="relative min-h-screen flex items-center px-6 pt-28 pb-20 overflow-hidden">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 grid-pattern opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      <div className="absolute top-1/3 -left-32 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-8"
+        >
+          <div className="section-label mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-glow-pulse" />
+            AI Engineering · New Mansoura University
+          </div>
+
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight text-balance mb-6">
+            Building <span className="gradient-text">intelligent systems</span> and engineering-focused software.
+          </h1>
+
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mb-8">
+            I'm <span className="text-foreground font-medium">Mark Amgad</span> — an AI Engineering student
+            working at the intersection of machine learning, symbolic AI, embedded systems, and software engineering.
+            I design and build practical, well-architected projects end-to-end.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="#featured-projects"
+              className="group inline-flex items-center gap-2 px-5 py-3 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+            >
+              View Projects
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </a>
+            <a
+              href="https://github.com/Mark1amgad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/40 text-sm font-medium transition-all"
+            >
+              <Github size={16} /> GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/markk-amgad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/40 text-sm font-medium transition-all"
+            >
+              <Linkedin size={16} /> LinkedIn
+            </a>
+            <a
+              href="/files/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/40 text-sm font-medium transition-all"
+            >
+              <Download size={16} /> Download CV
+            </a>
+          </div>
         </motion.div>
 
-        {/* Name */}
-        <motion.h1 initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        delay: 0.3,
-        duration: 0.6
-      }} className="text-5xl md:text-7xl font-black mb-4 leading-tight">
-          Mark{" "}
-          <span className="text-primary">Amgad</span>{" "}
-          Nassief
-        </motion.h1>
-
-        {/* Full name subtitle */}
-        
-
-        {/* Title */}
-        <motion.h2 initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        delay: 0.5,
-        duration: 0.6
-      }} className="text-2xl md:text-3xl font-semibold text-primary mb-8">
-          AI Engineering Student
-        </motion.h2>
-
-        {/* Profile Summary */}
-        <motion.p initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        delay: 0.6,
-        duration: 0.6
-      }} className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-          Passionate AI Engineering student with hands-on experience in software development, 
-          data analysis, and machine learning. Combining technical expertise with creative 
-          problem-solving to build innovative solutions.
-        </motion.p>
-
-        {/* Contact Links */}
-        
-
-        {/* Scroll indicator */}
-        
-      </motion.div>
-    </section>;
+        {/* Right meta column */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="lg:col-span-4 hidden lg:block"
+        >
+          <div className="relative rounded-xl border border-border bg-card/60 p-6 font-mono text-xs leading-relaxed">
+            <div className="flex items-center gap-1.5 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground/30" />
+              <span className="w-2.5 h-2.5 rounded-full bg-primary/70" />
+              <span className="ml-2 text-muted-foreground">~/profile.json</span>
+            </div>
+            <pre className="text-muted-foreground whitespace-pre-wrap">
+{`{
+  "role":     "AI Engineering Student",
+  "school":   "New Mansoura University",
+  "focus":    [
+    "Machine Learning",
+    "Symbolic AI",
+    "Algorithms & DSA",
+    "Embedded Systems"
+  ],
+  "stack":    ["Python","C#","C++","Arduino"],
+  "status":   "open to opportunities"
+}`}
+            </pre>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
 };
-const ContactLink = ({
-  icon,
-  href,
-  label
-}: {
-  icon: React.ReactNode;
-  href: string;
-  label: string;
-}) => <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-3 rounded-lg bg-secondary hover:bg-muted border border-border hover:border-primary/50 transition-all duration-300 group">
-    <span className="text-muted-foreground group-hover:text-primary transition-colors">{icon}</span>
-    <span className="text-sm font-medium">{label}</span>
-  </a>;
+
 export default Hero;
