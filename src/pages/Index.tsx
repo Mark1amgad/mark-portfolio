@@ -9,13 +9,21 @@ import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
+import searchVizNew from "@/assets/search-viz-new.png";
+import searchVizDemo from "@/assets/search-viz-demo.gif";
+
 const otherProjects = [
   {
-    title: "Disease Prediction System",
+    title: "Search Algorithm Visualizer",
     description:
-      "Classical-ML disease prediction pipeline: data preprocessing, feature engineering, and trained classifiers evaluated on standard medical datasets.",
-    stack: ["Python", "Scikit-learn", "Pandas", "Jupyter"],
-    githubUrl: "https://github.com/Mark1amgad",
+      "Interactive visualizer comparing BFS, DFS, DLS, IDS, UCS, Greedy, and A* on grid mazes. Renders frontier, visited set, and reconstructed path in real time with per-algorithm metrics.",
+    stack: ["Python", "Pygame", "Graph Search", "DSA"],
+    githubUrl: "https://github.com/Mark1amgad/search-algorithm-visualizer",
+    thumbnail: searchVizNew,
+    media: [
+      { type: "image" as const, src: searchVizNew, alt: "Search visualizer — BFS path found" },
+      { type: "image" as const, src: searchVizDemo, alt: "Search visualizer animation" },
+    ],
   },
   {
     title: "Bank Management System",
@@ -29,7 +37,7 @@ const otherProjects = [
     description:
       "Collection of data analytics deliverables produced during my DecodeLabs internship — cleaning, EDA, and Pandas-driven reporting notebooks.",
     stack: ["Python", "Pandas", "NumPy", "EDA"],
-    githubUrl: "https://github.com/Mark1amgad",
+    githubUrl: "https://github.com/Mark1amgad/DecodeLabs-Internship",
   },
   {
     title: "Bookstore Management System",
