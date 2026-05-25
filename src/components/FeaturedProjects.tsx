@@ -3,14 +3,13 @@ import { useState } from "react";
 import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
 import ProjectModal from "./ProjectModal";
 
-import aiSearch1 from "@/assets/ai-search-1.png";
-import aiSearch2 from "@/assets/ai-search-2.png";
-import aiSearch3 from "@/assets/ai-search-3.png";
-import aiSearch4 from "@/assets/ai-search-4.png";
-import aspsCover from "@/assets/asps-cover.png";
+import techDiagnosisUi from "@/assets/tech-diagnosis-ui.png";
+import diseasePredictionUi from "@/assets/disease-prediction-ui.png";
 import aspsHardware1 from "@/assets/asps-hardware-1.jpeg";
 import aspsHardware2 from "@/assets/asps-hardware-2.jpeg";
+import aspsCover from "@/assets/asps-cover.png";
 import aspsCircuitDiagramNew from "@/assets/asps-circuit-diagram-new.jpeg";
+import aspsRealProject from "@/assets/asps-real-project.jpeg";
 
 interface FeaturedProject {
   title: string;
@@ -22,59 +21,60 @@ interface FeaturedProject {
   liveUrl?: string;
   liveLabel?: string;
   media?: { type: "image" | "video"; src: string; alt?: string }[];
-  /** symbolic preview when no screenshots exist */
-  preview?: React.ReactNode;
 }
 
 const projects: FeaturedProject[] = [
   {
     title: "Tech Diagnosis AI",
-    tag: "Symbolic AI",
+    tag: "Symbolic AI · Expert System",
     description:
-      "An expert system that diagnoses technical hardware/software issues using symbolic AI — forward chaining over a rule base with certainty factors and explainable reasoning chains.",
-    focus: ["Forward chaining inference", "Certainty factor aggregation", "Explainable rule traces"],
-    stack: ["Python", "Symbolic AI", "Rule Engine", "Streamlit"],
-    githubUrl: "https://github.com/Mark1amgad",
-    preview: (
-      <div className="absolute inset-0 p-6 font-mono text-[11px] leading-relaxed text-muted-foreground overflow-hidden">
-        <div className="text-primary mb-2">// inference trace</div>
-        <div>IF <span className="text-foreground">device_won't_boot</span> AND <span className="text-foreground">no_power_led</span></div>
-        <div className="pl-3">THEN <span className="text-primary">power_supply_fault</span> <span className="text-foreground/60">[cf=0.85]</span></div>
-        <div className="mt-2">IF <span className="text-foreground">power_supply_fault</span> AND <span className="text-foreground">smell_burnt</span></div>
-        <div className="pl-3">THEN <span className="text-primary">replace_psu</span> <span className="text-foreground/60">[cf=0.92]</span></div>
-        <div className="mt-3 text-primary">→ conclusion: replace_psu (0.78)</div>
-      </div>
-    ),
+      "Knowledge-based expert system that diagnoses PC hardware/software faults from user symptoms. Uses a rule engine with forward chaining and certainty-factor aggregation, then surfaces a fully traceable reasoning chain explaining every conclusion.",
+    focus: [
+      "30+ production rules over a structured knowledge base",
+      "Forward chaining with certainty-factor (CF) propagation",
+      "Human-readable reasoning trace for every diagnosis",
+      "Tkinter GUI with symptoms, results, and explanation panels",
+    ],
+    stack: ["Python", "Rule Engine", "Tkinter", "Knowledge Base"],
+    githubUrl: "https://github.com/Mark1amgad/Tech-Diagnosis-AI",
+    media: [{ type: "image", src: techDiagnosisUi, alt: "Tech Diagnosis AI – knowledge-based expert system UI" }],
   },
   {
-    title: "Search Algorithm Visualizer",
-    tag: "Algorithms",
+    title: "Disease Prediction System",
+    tag: "Machine Learning",
     description:
-      "Interactive Streamlit app that compares classic graph search algorithms (BFS, DFS, DLS, IDS, UCS, Greedy Best-First) on a sample graph. Visualizes traversal paths, tree expansion, and per-algorithm metrics.",
-    focus: ["6 uninformed/informed algorithms", "Metric tracking", "Tree expansion visualization"],
-    stack: ["Python", "Streamlit", "Graph Search", "DSA"],
-    githubUrl: "https://github.com/Mark1amgad/search-algorithm-simulator",
-    media: [
-      { type: "image", src: aiSearch1, alt: "Algorithm selection" },
-      { type: "image", src: aiSearch2, alt: "Options" },
-      { type: "image", src: aiSearch3, alt: "Results" },
-      { type: "image", src: aiSearch4, alt: "Tree visualization" },
+      "End-to-end ML pipeline that predicts diseases from a symptom vector. Trains and evaluates multiple classifiers on a medical dataset, persists the best model, and serves predictions through a desktop GUI.",
+    focus: [
+      "Preprocessing + feature engineering on symptom data",
+      "Multi-model training and evaluation",
+      "Serialized model loaded by the desktop app",
+      "Packaged as a distributable Python application",
     ],
+    stack: ["Python", "Scikit-learn", "Pandas", "Tkinter"],
+    githubUrl: "https://github.com/Mark1amgad/Disease-Prediction-System",
+    media: [{ type: "image", src: diseasePredictionUi, alt: "Disease Prediction System UI" }],
   },
   {
     title: "Automated Smart Parking System",
-    tag: "Embedded",
+    tag: "Embedded · IoT",
     description:
-      "Dual-Arduino IoT parking system orchestrating entry/exit gates, slot detection, VIP RFID access, and safety alerts via IR, ultrasonic, RFID, flame, LDR, buzzer and LCD components.",
-    focus: ["Dual-board coordination", "RFID + sensor fusion", "Real-time safety logic"],
-    stack: ["Arduino", "C/C++", "RFID", "IoT"],
+      "Dual-Arduino smart parking prototype coordinating entry/exit gates, slot detection, VIP RFID access, and safety alerts using a fused IR + ultrasonic + RFID + flame + LDR sensor stack with a buzzer and LCD interface.",
+    focus: [
+      "Two coordinated Arduino boards over shared logic",
+      "Sensor fusion: IR, ultrasonic, RFID, flame, LDR",
+      "RFID-gated VIP access + real-time safety alerts",
+      "End-to-end hardware build with wired prototype",
+    ],
+    stack: ["Arduino", "C/C++", "RFID", "IoT", "Embedded"],
+    githubUrl: "https://github.com/Mark1amgad/ASPS-Arduino",
     liveUrl: "https://easy-park-tech.lovable.app",
     liveLabel: "Live demo",
     media: [
+      { type: "image", src: aspsHardware1, alt: "ASPS hardware prototype" },
+      { type: "image", src: aspsHardware2, alt: "ASPS hardware close-up" },
+      { type: "image", src: aspsRealProject, alt: "ASPS real-world build" },
+      { type: "image", src: aspsCircuitDiagramNew, alt: "ASPS circuit diagram" },
       { type: "image", src: aspsCover, alt: "ASPS cover" },
-      { type: "image", src: aspsHardware1, alt: "Hardware 1" },
-      { type: "image", src: aspsHardware2, alt: "Hardware 2" },
-      { type: "image", src: aspsCircuitDiagramNew, alt: "Circuit diagram" },
     ],
   },
 ];
@@ -96,15 +96,20 @@ const FeaturedProjects = () => {
             Selected engineering work.
           </h2>
           <p className="text-muted-foreground max-w-2xl mt-3">
-            Three projects that best represent how I approach AI, algorithms, and embedded systems.
+            Three projects that best represent how I approach AI, machine learning, and embedded systems.
           </p>
         </motion.div>
 
-        {/* Bento grid */}
+        {/* Bento grid – Tech Diagnosis AI is the headline tile */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-5">
-          <FeaturedCard project={projects[0]} className="lg:col-span-4 lg:row-span-2" large onOpen={() => setOpenIndex(0)} />
-          <FeaturedCard project={projects[1]} className="lg:col-span-2" onOpen={() => setOpenIndex(1)} />
-          <FeaturedCard project={projects[2]} className="lg:col-span-2" onOpen={() => setOpenIndex(2)} />
+          <FeaturedCard
+            project={projects[0]}
+            className="lg:col-span-6"
+            large
+            onOpen={() => setOpenIndex(0)}
+          />
+          <FeaturedCard project={projects[1]} className="lg:col-span-3" onOpen={() => setOpenIndex(1)} />
+          <FeaturedCard project={projects[2]} className="lg:col-span-3" onOpen={() => setOpenIndex(2)} />
         </div>
       </div>
 
@@ -143,26 +148,27 @@ const FeaturedCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className={`group relative flex flex-col rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 transition-all duration-300 ${className}`}
+      className={`group relative flex flex-col rounded-xl border border-border bg-card overflow-hidden hover:border-primary/50 hover:shadow-[0_0_0_1px_hsl(var(--primary)/0.25)] transition-all duration-300 ${className}`}
     >
-      {/* Preview */}
       <button
         onClick={onOpen}
-        className={`relative w-full overflow-hidden bg-secondary/40 ${large ? "h-72 md:h-96" : "h-44"}`}
+        aria-label={`Open ${project.title} details`}
+        className={`relative w-full overflow-hidden bg-secondary/40 ${large ? "h-80 md:h-[420px]" : "h-56 md:h-64"}`}
       >
-        {mainMedia ? (
+        {mainMedia && (
           <img
             src={mainMedia.src}
             alt={mainMedia.alt || project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+            loading="lazy"
           />
-        ) : project.preview ? (
-          <div className="relative w-full h-full bg-[radial-gradient(ellipse_at_top_left,hsl(var(--primary)/0.15),transparent_60%)]">
-            {project.preview}
-          </div>
-        ) : null}
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/0 to-background/0 opacity-60" />
         <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-background/70 backdrop-blur-md border border-border text-[10px] font-mono uppercase tracking-wider text-primary">
           {project.tag}
+        </div>
+        <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 rounded-md bg-background/80 backdrop-blur-md border border-border text-[11px] font-mono text-foreground inline-flex items-center gap-1.5">
+          Click to inspect <ArrowUpRight size={12} />
         </div>
       </button>
 
@@ -172,15 +178,13 @@ const FeaturedCard = ({
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed mb-4">{project.description}</p>
 
-        {large && (
-          <ul className="space-y-1.5 mb-5">
-            {project.focus.map((f) => (
-              <li key={f} className="text-sm text-foreground/80 flex gap-2">
-                <span className="text-primary font-mono">→</span> {f}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul className="space-y-1.5 mb-5">
+          {project.focus.slice(0, large ? 4 : 3).map((f) => (
+            <li key={f} className="text-sm text-foreground/80 flex gap-2">
+              <span className="text-primary font-mono">→</span> {f}
+            </li>
+          ))}
+        </ul>
 
         <div className="flex flex-wrap gap-1.5 mb-5">
           {project.stack.map((s) => (
@@ -190,7 +194,7 @@ const FeaturedCard = ({
           ))}
         </div>
 
-        <div className="mt-auto flex items-center gap-3 text-xs">
+        <div className="mt-auto flex items-center gap-4 text-xs">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
