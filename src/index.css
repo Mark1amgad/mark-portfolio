@@ -2,79 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* Dark professional portfolio design system */
+/* Midnight Indigo — engineering portfolio system */
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 96%;
+    --background: 240 47% 6%;
+    --foreground: 230 30% 92%;
 
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 96%;
+    --card: 240 40% 9%;
+    --card-foreground: 230 30% 92%;
 
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 240 40% 9%;
+    --popover-foreground: 230 30% 92%;
 
-    --primary: 173 80% 50%;
-    --primary-foreground: 222 47% 6%;
+    /* Indigo accent #4f46e5 */
+    --primary: 243 75% 59%;
+    --primary-foreground: 240 47% 6%;
+    --primary-glow: 243 80% 72%;
 
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 90%;
+    --secondary: 240 35% 12%;
+    --secondary-foreground: 230 25% 88%;
 
-    --muted: 222 30% 18%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 240 25% 16%;
+    --muted-foreground: 230 15% 60%;
 
-    --accent: 173 80% 50%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 240 47% 6%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 230 30% 92%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 173 80% 50%;
+    --border: 240 25% 16%;
+    --input: 240 25% 16%;
+    --ring: 243 75% 59%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
-    /* Custom portfolio tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(173 80% 50%) 0%, hsl(190 80% 45%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(173 80% 50% / 0.2) 0%, hsl(190 80% 45% / 0.1) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(222 47% 11%) 0%, hsl(222 47% 8%) 100%);
-    --shadow-glow: 0 0 40px hsl(173 80% 50% / 0.15);
-    --shadow-card: 0 10px 40px hsl(222 47% 3% / 0.5);
+    --gradient-primary: linear-gradient(135deg, hsl(243 75% 59%) 0%, hsl(243 80% 72%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(240 40% 10%) 0%, hsl(240 40% 7%) 100%);
+    --shadow-glow: 0 0 60px hsl(243 75% 59% / 0.18);
+    --shadow-card: 0 8px 32px hsl(240 60% 3% / 0.5);
 
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 90%;
-    --sidebar-primary: 173 80% 50%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 14%;
-    --sidebar-accent-foreground: 210 40% 90%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 173 80% 50%;
+    --sidebar-background: 240 40% 8%;
+    --sidebar-foreground: 230 25% 88%;
+    --sidebar-primary: 243 75% 59%;
+    --sidebar-primary-foreground: 240 47% 6%;
+    --sidebar-accent: 240 35% 12%;
+    --sidebar-accent-foreground: 230 25% 88%;
+    --sidebar-border: 240 25% 16%;
+    --sidebar-ring: 243 75% 59%;
   }
 
   .dark {
-    --background: 222 47% 6%;
-    --foreground: 210 40% 96%;
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 96%;
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 173 80% 50%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 222 30% 14%;
-    --secondary-foreground: 210 40% 90%;
-    --muted: 222 30% 18%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 173 80% 50%;
-    --accent-foreground: 222 47% 6%;
+    --background: 240 47% 6%;
+    --foreground: 230 30% 92%;
+    --card: 240 40% 9%;
+    --card-foreground: 230 30% 92%;
+    --popover: 240 40% 9%;
+    --popover-foreground: 230 30% 92%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 240 47% 6%;
+    --secondary: 240 35% 12%;
+    --secondary-foreground: 230 25% 88%;
+    --muted: 240 25% 16%;
+    --muted-foreground: 230 15% 60%;
+    --accent: 243 75% 59%;
+    --accent-foreground: 240 47% 6%;
     --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 173 80% 50%;
+    --destructive-foreground: 230 30% 92%;
+    --border: 240 25% 16%;
+    --input: 240 25% 16%;
+    --ring: 243 75% 59%;
   }
 }
 
@@ -83,17 +83,22 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Manrope', sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    @apply font-bold tracking-tight;
+    font-family: 'Sora', sans-serif;
+    @apply tracking-tight;
   }
 
-  code, pre {
+  code, pre, .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
 }
@@ -110,8 +115,18 @@
 
   .glass-card {
     background: var(--gradient-card);
-    backdrop-filter: blur(10px);
     box-shadow: var(--shadow-card);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em] text-primary;
   }
 }
 

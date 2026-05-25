@@ -1,85 +1,74 @@
 import { motion } from "framer-motion";
-import { Linkedin, Github, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.jpeg";
+
+const pillars = [
+  { k: "AI & ML", v: "Classical models, NLP, evaluation pipelines" },
+  { k: "Symbolic AI", v: "Rule-based reasoning, search, knowledge systems" },
+  { k: "Software", v: "OOP, clean architecture, end-to-end products" },
+  { k: "Embedded", v: "Arduino, sensor automation, real-time logic" },
+];
 
 const AboutSection = () => {
   return (
-    <section id="about-section" className="py-20 px-6 bg-secondary/30">
+    <section id="about-section" className="py-24 px-6 border-t border-border/60">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
-            About <span className="text-primary">Me</span>
+          <div className="section-label mb-3">01 / About</div>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold max-w-2xl">
+            An engineering mindset applied to <span className="gradient-text">AI and systems</span>.
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A quick look at who I am and what drives me.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-[auto_1fr] gap-12 items-center">
-          {/* Profile Photo */}
+        <div className="grid md:grid-cols-[260px_1fr] gap-10 lg:gap-16 items-start">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center"
+            transition={{ duration: 0.5 }}
+            className="relative"
           >
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-full bg-primary/40 blur-lg" />
-              <img
-                src={profilePhoto}
-                alt="Mark Amgad Nassief"
-                className="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover border-4 border-primary/50"
-              />
+            <div className="absolute -inset-2 rounded-2xl bg-primary/20 blur-2xl opacity-60" />
+            <div className="relative rounded-2xl overflow-hidden border border-border bg-card">
+              <img src={profilePhoto} alt="Mark Amgad Nassief" className="w-full aspect-square object-cover" />
+            </div>
+            <div className="mt-4 font-mono text-xs text-muted-foreground">
+              <div><span className="text-primary">→</span> New Mansoura University</div>
+              <div><span className="text-primary">→</span> AI Engineering, BSc</div>
             </div>
           </motion.div>
 
-          {/* Bio & Links */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-6"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-8"
           >
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm <span className="text-foreground font-semibold">Mark Amgad Nassief</span>, an AI Engineering student passionate about building intelligent software solutions. From embedded systems and desktop apps to web platforms and data dashboards, I enjoy turning ideas into polished, real-world products. I'm always exploring new technologies and looking for opportunities to grow and collaborate.
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              I build projects that sit between AI research and traditional software engineering — from
+              symbolic reasoning systems and algorithm visualizers to embedded automation and data
+              dashboards. My focus is on writing readable code, structuring problems clearly, and
+              shipping things that actually work.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              I care about strong fundamentals: data structures, algorithms, OOP, and how systems
+              fit together. Every project here was built end-to-end, with attention to the engineering
+              decisions behind it.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <Button asChild variant="outline" className="gap-2">
-                <a
-                  href="https://www.linkedin.com/in/markk-amgad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin size={18} />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="gap-2">
-                <a
-                  href="https://github.com/Mark1amgad"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github size={18} />
-                  GitHub
-                </a>
-              </Button>
-              <Button asChild className="gap-2">
-                <a href="/files/resume.pdf" download>
-                  <Download size={18} />
-                  Download Resume
-                </a>
-              </Button>
+            <div className="grid sm:grid-cols-2 gap-px bg-border/70 border border-border rounded-xl overflow-hidden">
+              {pillars.map((p) => (
+                <div key={p.k} className="bg-card p-5">
+                  <div className="font-mono text-xs text-primary mb-1.5">{p.k}</div>
+                  <div className="text-sm text-foreground/90">{p.v}</div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

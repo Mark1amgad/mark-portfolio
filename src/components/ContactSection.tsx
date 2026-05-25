@@ -48,22 +48,24 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact-section" className="py-20 px-6 bg-secondary/30">
+    <section id="contact-section" className="py-24 px-6 border-t border-border/60">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
-            Get In <span className="text-primary">Touch</span>
+          <div className="section-label mb-3">07 / Contact</div>
+          <h2 className="font-display text-3xl md:text-4xl font-semibold tracking-tight">
+            Let's <span className="gradient-text">build something</span>.
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+          <p className="text-muted-foreground max-w-2xl mt-3">
+            Open to internships, collaborations, and engineering-focused opportunities.
           </p>
         </motion.div>
+
 
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
