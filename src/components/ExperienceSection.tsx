@@ -36,11 +36,19 @@ const ExperienceSection = () => {
             running exploratory analysis, and building Python + Pandas workflows to surface
             patterns and feed downstream reporting.
           </p>
-          <ul className="space-y-1.5 text-sm text-foreground/80">
+          <ul className="space-y-1.5 text-sm text-foreground/80 mb-5">
             <li className="flex gap-2"><span className="text-primary font-mono">→</span> Data cleaning and validation pipelines</li>
             <li className="flex gap-2"><span className="text-primary font-mono">→</span> Preprocessing for downstream analysis</li>
             <li className="flex gap-2"><span className="text-primary font-mono">→</span> Exploratory analysis with Pandas / NumPy</li>
           </ul>
+          <a
+            href="https://github.com/Mark1amgad/DecodeLabs-Internship"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:gap-2 transition-all"
+          >
+            → github.com/Mark1amgad/DecodeLabs-Internship
+          </a>
         </motion.div>
       </div>
     </section>

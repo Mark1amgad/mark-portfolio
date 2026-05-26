@@ -47,9 +47,13 @@ const Hero = () => {
               <Github size={16} /> GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/markk-amgad"
+              href="https://www.linkedin.com/in/markk-amgad/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer external"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open("https://www.linkedin.com/in/markk-amgad/", "_blank", "noopener,noreferrer");
+              }}
               className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/40 text-sm font-medium transition-all"
             >
               <Linkedin size={16} /> LinkedIn

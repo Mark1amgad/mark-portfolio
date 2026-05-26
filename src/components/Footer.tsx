@@ -14,7 +14,7 @@ const Footer = () => {
 
         <div className="flex items-center gap-3">
           <SocialLink href="https://github.com/Mark1amgad" icon={<Github size={16} />} label="GitHub" />
-          <SocialLink href="https://www.linkedin.com/in/markk-amgad" icon={<Linkedin size={16} />} label="LinkedIn" />
+          <SocialLink href="https://www.linkedin.com/in/markk-amgad/" icon={<Linkedin size={16} />} label="LinkedIn" />
           <SocialLink href="mailto:Markbotros52@gmail.com" icon={<Mail size={16} />} label="Email" />
         </div>
 
@@ -26,16 +26,27 @@ const Footer = () => {
   );
 };
 
-const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={label}
-    className="w-9 h-9 rounded-md border border-border bg-secondary/50 hover:border-primary/40 hover:text-primary flex items-center justify-center text-muted-foreground transition-all"
-  >
-    {icon}
-  </a>
-);
+const SocialLink = ({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) => {
+  const isExternal = /^https?:\/\//.test(href);
+  return (
+    <a
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer external" : undefined}
+      onClick={
+        isExternal
+          ? (e) => {
+              e.preventDefault();
+              window.open(href, "_blank", "noopener,noreferrer");
+            }
+          : undefined
+      }
+      aria-label={label}
+      className="w-9 h-9 rounded-md border border-border bg-secondary/50 hover:border-primary/40 hover:text-primary flex items-center justify-center text-muted-foreground transition-all"
+    >
+      {icon}
+    </a>
+  );
+};
 
 export default Footer;
