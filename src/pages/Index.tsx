@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 import searchVizNew from "@/assets/search-viz-new.png";
 import searchVizDemo from "@/assets/search-viz-demo.gif";
-import bankDemo from "@/assets/bank-demo.gif";
+import bankDemo from "@/assets/bank-demo-new.gif";
 import bankAccounts from "@/assets/bank-accounts.png";
 import bankAdmin from "@/assets/bank-admin.png";
 import bookstoreNew from "@/assets/bookstore-new.png";

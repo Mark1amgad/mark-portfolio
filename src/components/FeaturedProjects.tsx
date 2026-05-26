@@ -5,11 +5,9 @@ import ProjectModal from "./ProjectModal";
 
 import techDiagnosisUi from "@/assets/tech-diagnosis-ui.png";
 import diseasePredictionUi from "@/assets/disease-prediction-ui.png";
+import aspsInterface from "@/assets/asps-interface.jpeg";
 import aspsHardware1 from "@/assets/asps-hardware-1.jpeg";
-import aspsHardware2 from "@/assets/asps-hardware-2.jpeg";
-import aspsCover from "@/assets/asps-cover.png";
 import aspsCircuitDiagramNew from "@/assets/asps-circuit-diagram-new.jpeg";
-import aspsRealProject from "@/assets/asps-real-project.jpeg";
 
 interface FeaturedProject {
   title: string;
@@ -70,11 +68,9 @@ const projects: FeaturedProject[] = [
     liveUrl: "https://easy-park-tech.lovable.app",
     liveLabel: "Live demo",
     media: [
+      { type: "image", src: aspsInterface, alt: "ASPS – annotated system overview" },
       { type: "image", src: aspsHardware1, alt: "ASPS hardware prototype" },
-      { type: "image", src: aspsHardware2, alt: "ASPS hardware close-up" },
-      { type: "image", src: aspsRealProject, alt: "ASPS real-world build" },
       { type: "image", src: aspsCircuitDiagramNew, alt: "ASPS circuit diagram" },
-      { type: "image", src: aspsCover, alt: "ASPS cover" },
     ],
   },
 ];
