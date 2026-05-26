@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Download, ArrowRight } from "lucide-react";
+import { Github, Linkedin, FileText, ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -60,10 +60,11 @@ const Hero = () => {
             </a>
             <a
               href="/files/resume.pdf"
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/40 text-sm font-medium transition-all"
             >
-              <Download size={16} /> Download CV
+              <FileText size={16} /> View CV
             </a>
           </div>
         </motion.div>

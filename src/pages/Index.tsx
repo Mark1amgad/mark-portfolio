@@ -31,7 +31,7 @@ const otherProjects = [
   {
     title: "Search Algorithm Visualizer",
     description:
-      "Interactive visualizer comparing BFS, DFS, DLS, IDS, UCS, Greedy, and A* on grid mazes. Renders frontier, visited set, and reconstructed path in real time with per-algorithm metrics.",
+      "Built to make graph search algorithms tangible. Compares BFS, DFS, DLS, IDS, UCS, Greedy, and A* on live grid mazes — rendering the frontier, visited set, and reconstructed path frame-by-frame with per-algorithm step and cost metrics.",
     stack: ["Python", "Pygame", "Graph Search", "DSA"],
     githubUrl: "https://github.com/Mark1amgad/search-algorithm-visualizer",
     thumbnail: searchVizDemo,
@@ -43,7 +43,7 @@ const otherProjects = [
   {
     title: "Bank Management System",
     description:
-      "C# Windows Forms banking system with account types, transfers with limits, VIP logic, and an admin dashboard — built around custom data structures.",
+      "C# WinForms banking app built without standard collection classes — core logic runs on custom-implemented linked lists and stacks. Supports multiple account types, inter-account transfers with limits, a VIP access tier, and a separate admin dashboard.",
     stack: ["C#", "WinForms", "DSA", "OOP"],
     githubUrl: "https://github.com/Mark1amgad/bank-management-system-dsa",
     thumbnail: bankDemo,
@@ -56,7 +56,7 @@ const otherProjects = [
   {
     title: "Bookstore Management System",
     description:
-      "C# .NET 10 desktop app with custom dark UI, repository pattern persistence, and clean OOP architecture with interfaces and inheritance.",
+      "C# .NET 10 desktop app structured as a study in software design principles — repository pattern for persistence, interface-driven OOP with clear inheritance hierarchies, and a custom GDI+ dark UI. Clean separation between data, domain, and presentation layers.",
     stack: ["C#", ".NET", "OOP", "GDI+"],
     githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop",
     thumbnail: bookstoreNew,
@@ -68,7 +68,7 @@ const otherProjects = [
   {
     title: "Prompt Understanding Test",
     description:
-      "Gradio app evaluating LLM prompt understanding via Hugging Face inference, sentence transformers, and cosine similarity scoring.",
+      "Gradio tool that tests LLM prompt-following ability by scoring semantic similarity between expected and model-generated outputs using sentence-transformers and cosine distance — deployed as a live Hugging Face Space.",
     stack: ["Python", "Gradio", "Hugging Face", "NLP"],
     githubUrl: "https://github.com/Mark1amgad/prompt-understanding-test",
     liveUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
