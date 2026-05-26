@@ -11,6 +11,21 @@ import Footer from "@/components/Footer";
 
 import searchVizNew from "@/assets/search-viz-new.png";
 import searchVizDemo from "@/assets/search-viz-demo.gif";
+import bankDemo from "@/assets/bank-demo.gif";
+import bankAccounts from "@/assets/bank-accounts.png";
+import bankAdmin from "@/assets/bank-admin.png";
+import bookstoreNew from "@/assets/bookstore-new.png";
+import bookstoreManagement from "@/assets/bookstore-management.png";
+import bookstoreClassDiagram from "@/assets/bookstore-class-diagram.jpeg";
+import promptTestNew from "@/assets/prompt-test-new.png";
+import promptTest1 from "@/assets/prompt-test-1.png";
+import promptTest2 from "@/assets/prompt-test-2.png";
+import promptTest3 from "@/assets/prompt-test-3.png";
+import promptTest4 from "@/assets/prompt-test-4.png";
+import expenseTracker1 from "@/assets/expense-tracker-1.png";
+import expenseTracker2 from "@/assets/expense-tracker-2.png";
+import expenseTracker3 from "@/assets/expense-tracker-3.png";
+import expenseTracker4 from "@/assets/expense-tracker-4.png";
 
 const otherProjects = [
   {
@@ -19,10 +34,10 @@ const otherProjects = [
       "Interactive visualizer comparing BFS, DFS, DLS, IDS, UCS, Greedy, and A* on grid mazes. Renders frontier, visited set, and reconstructed path in real time with per-algorithm metrics.",
     stack: ["Python", "Pygame", "Graph Search", "DSA"],
     githubUrl: "https://github.com/Mark1amgad/search-algorithm-visualizer",
-    thumbnail: searchVizNew,
+    thumbnail: searchVizDemo,
     media: [
+      { type: "image" as const, src: searchVizDemo, alt: "Search visualizer — live algorithm animation" },
       { type: "image" as const, src: searchVizNew, alt: "Search visualizer — BFS path found" },
-      { type: "image" as const, src: searchVizDemo, alt: "Search visualizer animation" },
     ],
   },
   {
@@ -31,6 +46,25 @@ const otherProjects = [
       "C# Windows Forms banking system with account types, transfers with limits, VIP logic, and an admin dashboard — built around custom data structures.",
     stack: ["C#", "WinForms", "DSA", "OOP"],
     githubUrl: "https://github.com/Mark1amgad/bank-management-system-dsa",
+    thumbnail: bankDemo,
+    media: [
+      { type: "image" as const, src: bankDemo, alt: "Bank Management System — live demo" },
+      { type: "image" as const, src: bankAccounts, alt: "Manage Accounts screen" },
+      { type: "image" as const, src: bankAdmin, alt: "Admin access dashboard" },
+    ],
+  },
+  {
+    title: "Bookstore Management System",
+    description:
+      "C# .NET 10 desktop app with custom dark UI, repository pattern persistence, and clean OOP architecture with interfaces and inheritance.",
+    stack: ["C#", ".NET", "OOP", "GDI+"],
+    githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop",
+    thumbnail: bookstoreNew,
+    media: [
+      { type: "image" as const, src: bookstoreNew, alt: "Bookstore Management — client details" },
+      { type: "image" as const, src: bookstoreManagement, alt: "Bookstore Management UI" },
+      { type: "image" as const, src: bookstoreClassDiagram, alt: "Bookstore class diagram" },
+    ],
   },
   {
     title: "DecodeLabs Internship Portfolio",
@@ -40,25 +74,37 @@ const otherProjects = [
     githubUrl: "https://github.com/Mark1amgad/DecodeLabs-Internship",
   },
   {
-    title: "Bookstore Management System",
-    description:
-      "C# .NET 10 desktop app with custom dark UI, repository pattern persistence, and clean OOP architecture with interfaces and inheritance.",
-    stack: ["C#", ".NET", "OOP", "GDI+"],
-    githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop/tree/main",
-  },
-  {
     title: "Prompt Understanding Test",
     description:
       "Gradio app evaluating LLM prompt understanding via Hugging Face inference, sentence transformers, and cosine similarity scoring.",
     stack: ["Python", "Gradio", "Hugging Face", "NLP"],
-    githubUrl: "https://github.com/Mark1amgad/prompt-understanding-test/tree/main",
+    githubUrl: "https://github.com/Mark1amgad/prompt-understanding-test",
+    liveUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
+    liveLabel: "Open app",
+    thumbnail: promptTestNew,
+    media: [
+      { type: "image" as const, src: promptTestNew, alt: "Prompt Understanding Test — main UI" },
+      { type: "image" as const, src: promptTest1, alt: "Prompt Test screenshot 1" },
+      { type: "image" as const, src: promptTest2, alt: "Prompt Test screenshot 2" },
+      { type: "image" as const, src: promptTest3, alt: "Prompt Test screenshot 3" },
+      { type: "image" as const, src: promptTest4, alt: "Prompt Test screenshot 4" },
+    ],
   },
   {
     title: "Weekly Expense Tracker",
     description:
-      "Mobile-responsive expense tracker with dual-language (Arabic/English) interface, local persistence, and CSV/JSON export.",
+      "Mobile-responsive expense tracker with dual-language (Arabic/English) interface, local persistence, and CSV/JSON export. Fully deployable single-file web app.",
     stack: ["JavaScript", "HTML5", "CSS3", "RTL"],
-    githubUrl: "https://github.com/Mark1amgad/expense-tracker/tree/main",
+    githubUrl: "https://github.com/Mark1amgad/expense-tracker",
+    liveUrl: "/files/expense-tracker.html",
+    liveLabel: "Open app",
+    thumbnail: expenseTracker1,
+    media: [
+      { type: "image" as const, src: expenseTracker1, alt: "Expense Tracker — overview" },
+      { type: "image" as const, src: expenseTracker2, alt: "Expense Tracker — add expense" },
+      { type: "image" as const, src: expenseTracker3, alt: "Expense Tracker — summary" },
+      { type: "image" as const, src: expenseTracker4, alt: "Expense Tracker — export" },
+    ],
   },
 ];
 
