@@ -61,17 +61,9 @@ const otherProjects = [
     githubUrl: "https://github.com/Mark1amgad/bookstore-management-system-oop",
     thumbnail: bookstoreNew,
     media: [
-      { type: "image" as const, src: bookstoreNew, alt: "Bookstore Management — client details" },
       { type: "image" as const, src: bookstoreManagement, alt: "Bookstore Management UI" },
       { type: "image" as const, src: bookstoreClassDiagram, alt: "Bookstore class diagram" },
     ],
-  },
-  {
-    title: "DecodeLabs Internship Portfolio",
-    description:
-      "Collection of data analytics deliverables produced during my DecodeLabs internship — cleaning, EDA, and Pandas-driven reporting notebooks.",
-    stack: ["Python", "Pandas", "NumPy", "EDA"],
-    githubUrl: "https://github.com/Mark1amgad/DecodeLabs-Internship",
   },
   {
     title: "Prompt Understanding Test",
@@ -80,10 +72,9 @@ const otherProjects = [
     stack: ["Python", "Gradio", "Hugging Face", "NLP"],
     githubUrl: "https://github.com/Mark1amgad/prompt-understanding-test",
     liveUrl: "https://huggingface.co/spaces/Mark1amgad/prompt-understanding-test",
-    liveLabel: "Open app",
+    liveLabel: "Open on Hugging Face",
     thumbnail: promptTestNew,
     media: [
-      { type: "image" as const, src: promptTestNew, alt: "Prompt Understanding Test — main UI" },
       { type: "image" as const, src: promptTest1, alt: "Prompt Test screenshot 1" },
       { type: "image" as const, src: promptTest2, alt: "Prompt Test screenshot 2" },
       { type: "image" as const, src: promptTest3, alt: "Prompt Test screenshot 3" },
