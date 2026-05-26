@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101322">
+  <title>Weekly Expenses Tracker</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --primary:#6366f1;
+      --primary-soft:#4f46e5;
+      --danger:#f97373;
+      --bg-light:#f3f4f6;
+      --card-light:#ffffff;
+      --text-main:#111827;
+      --text-muted:#6b7280;
+      --bg-dark:#050816;
+      --bg-dark-soft:#0b1020;
+      --card-dark:#111827;
+      --border-dark:#1f2933;
+      --text-dark-main:#e5e7eb;
+      --text-dark-muted:#9ca3af;
+    }
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:linear-gradient(135deg,#6366f1 0%,#0f172a 40%,#020617 100%);
+      min-height:100vh;
+      padding:10px;
+      color:var(--text-main);
+      transition:background .3s,color .3s;
+    }
+    body.dark{
+      background:radial-gradient(circle at top,#1d2a73 0,#020617 55%,#000 100%);
+      color:var(--text-dark-main);
+    }
+    .shell{
+      max-width:520px;
+      margin:0 auto;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 18px 55px rgba(15,23,42,.8);
+      background:rgba(15,23,42,.94);
+      border:1px solid rgba(148,163,184,.25);
+    }
+    body.light .shell{
+      background:var(--card-light);
+      box-shadow:0 16px 40px rgba(148,163,184,.45);
+      border:1px solid #e5e7eb;
+    }
+    .header{
+      position:relative;
+      padding:16px 18px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:linear-gradient(135deg,#6366f1 0,#4f46e5 35%,#0f172a 100%);
+      color:#fff;
+    }
+    .header-main{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .app-title{
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:.01em;
+    }
+    .app-sub{
+      font-size:12px;
+      opacity:.9;
+    }
+    .header-controls{
+      display:flex;
+      gap:8px;
+    }
+    .chip-btn{
+      border:none;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:11px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      gap:4px;
+      cursor:pointer;
+      background:rgba(15,23,42,.45);
+      color:#e5e7eb;
+      transition:background .2s,transform .15s;
+    }
+    .chip-btn span{
+      font-size:13px;
+    }
+    .chip-btn:hover{background:rgba(15,23,42,.7);transform:translateY(-1px)}
+    .chip-btn.active{background:#facc15;color:#111827}
+    .chip-btn-outline{
+      border:1px solid rgba(248,250,252,.65);
+      background:transparent;
+    }
+    .budget-bar{
+      padding:10px 14px 6px;
+      background:rgba(15,23,42,.9);
+      border-bottom:1px solid rgba(31,41,55,.9);
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    body.light .budget-bar{
+      background:var(--bg-light);
+      border-bottom:1px solid #e5e7eb;
+    }
+    .budget-label{
+      font-size:11px;
+      color:rgba(209,213,219,.95);
+    }
+    body.light .budget-label{color:var(--text-muted)}
+    .budget-row{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .budget-row input{
+      flex:1;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(55,65,81,.8);
+      font-size:13px;
+      background:rgba(15,23,42,.6);
+      color:#e5e7eb;
+      outline:none;
+      transition:border .2s,background .2s;
+    }
+    body.light .budget-row input{
+      background:#fff;
+      color:var(--text-main);
+      border-color:#d1d5db;
+    }
+    .budget-row input:focus{
+      border-color:#a5b4fc;
+      background:rgba(15,23,42,.85);
+    }
+    .pill-btn{
+      border:none;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:11px;
+      font-weight:600;
+      background:#22c55e;
+      color:#022c22;
+      cursor:pointer;
+      white-space:nowrap;
+      transition:background .2s,transform .15s;
+    }
+    .pill-btn:hover{background:#16a34a;transform:translateY(-1px)}
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:8px;
+      padding:10px 14px 14px;
+      background:rgba(15,23,42,.9);
+      border-bottom:1px solid rgba(31,41,55,.9);
+    }
+    body.light .stats{
+      background:var(--bg-light);
+      border-bottom:1px solid #e5e7eb;
+    }
+    .stat{
+      padding:7px 6px;
+      border-radius:10px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(51,65,85,.9);
+      text-align:center;
+    }
+    body.light .stat{background:#fff;border-color:#e5e7eb}
+    .stat-label{
+      font-size:10px;
+      color:var(--text-dark-muted);
+    }
+    body.light .stat-label{color:var(--text-muted)}
+    .stat-value{
+      margin-top:3px;
+      font-size:13px;
+      font-weight:700;
+      color:#e5e7eb;
+    }
+    body.light .stat-value{color:var(--primary-soft)}
+    .stat-value.negative{color:#f97373}
+    .stat-value.positive{color:#4ade80}
+    .days{
+      display:flex;
+      gap:6px;
+      padding:10px 14px;
+      overflow-x:auto;
+      background:var(--bg-dark-soft);
+      border-bottom:1px solid rgba(31,41,55,.9);
+    }
+    body.light .days{
+      background:#f9fafb;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .day-btn{
+      flex-shrink:0;
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(75,85,99,.95);
+      background:rgba(15,23,42,.85);
+      color:#e5e7eb;
+      font-size:12px;
+      font-weight:600;
+      cursor:pointer;
+      position:relative;
+      transition:background .2s,border .2s,transform .15s;
+      white-space:nowrap;
+    }
+    body.light .day-btn{
+      background:#fff;
+      color:var(--text-main);
+      border-color:#d1d5db;
+    }
+    .day-btn.active{
+      background:linear-gradient(135deg,#6366f1 0,#4f46e5 100%);
+      border-color:#4f46e5;
+      transform:translateY(-1px);
+    }
+    .badge{
+      position:absolute;
+      top:-4px;
+      right:-4px;
+      min-width:18px;
+      height:18px;
+      border-radius:999px;
+      background:#f97316;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:10px;
+      font-weight:700;
+    }
+    .section{
+      padding:14px 16px;
+      border-bottom:1px solid rgba(31,41,55,.9);
+      background:var(--bg-dark-soft);
+    }
+    body.light .section{
+      background:#fff;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .section-title{
+      font-size:14px;
+      font-weight:600;
+      color:#e5e7eb;
+      margin-bottom:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    body.light .section-title{color:var(--text-main)}
+    .pill-count{
+      padding:3px 9px;
+      border-radius:999px;
+      font-size:11px;
+      background:rgba(37,99,235,.1);
+      color:#a5b4fc;
+      border:1px solid rgba(129,140,248,.4);
+    }
+    body.light .pill-count{
+      background:#eef2ff;
+      color:#4f46e5;
+      border-color:#c7d2fe;
+    }
+    .field{
+      margin-bottom:10px;
+    }
+    .field label{
+      display:block;
+      font-size:12px;
+      margin-bottom:4px;
+      color:var(--text-dark-muted);
+    }
+    body.light .field label{color:var(--text-muted)}
+    .field input,
+    .field textarea{
+      width:100%;
+      padding:9px 11px;
+      border-radius:10px;
+      border:1px solid rgba(55,65,81,.85);
+      background:#020617;
+      color:#e5e7eb;
+      font-size:13px;
+      resize:vertical;
+      min-height:40px;
+      outline:none;
+      transition:border .2s,background .2s;
+    }
+    body.light .field input,
+    body.light .field textarea{
+      background:#f9fafb;
+      color:var(--text-main);
+      border-color:#d1d5db;
+    }
+    .field input:focus,
+    .field textarea:focus{
+      border-color:#818cf8;
+      background:#020617;
+    }
+    body.light .field input:focus,
+    body.light .field textarea:focus{
+      background:#fff;
+    }
+    .presets{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:6px;
+      margin-top:6px;
+    }
+    .preset-chip{
+      padding:6px 4px;
+      font-size:11px;
+      border-radius:999px;
+      border:1px dashed rgba(148,163,184,.7);
+      background:transparent;
+      color:#e5e7eb;
+      cursor:pointer;
+      transition:background .2s,border .2s;
+    }
+    body.light .preset-chip{
+      color:var(--text-muted);
+      border-color:#cbd5f5;
+    }
+    .preset-chip:hover{
+      background:rgba(129,140,248,.12);
+      border-style:solid;
+    }
+    .btn-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+      margin-top:8px;
+    }
+    .btn-main{
+      padding:10px;
+      border-radius:10px;
+      border:none;
+      font-size:14px;
+      font-weight:600;
+      color:#fff;
+      cursor:pointer;
+      background:linear-gradient(135deg,#6366f1 0,#4f46e5 100%);
+      box-shadow:0 10px 25px rgba(79,70,229,.55);
+      transition:transform .15s,box-shadow .2s;
+    }
+    .btn-main:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(79,70,229,.7)}
+    .entries-empty{
+      padding:18px 8px;
+      text-align:center;
+      font-size:12px;
+      color:var(--text-dark-muted);
+      font-style:italic;
+    }
+    body.light .entries-empty{color:var(--text-muted)}
+    .entry{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      padding:10px 9px;
+      border-radius:10px;
+      margin-bottom:7px;
+      background:#020617;
+      border:1px solid rgba(55,65,81,.95);
+    }
+    body.light .entry{
+      background:#f9fafb;
+      border-color:#e5e7eb;
+    }
+    .entry-main{
+      flex:1;
+    }
+    .entry-amount{
+      font-size:14px;
+      font-weight:700;
+      color:#a5b4fc;
+    }
+    body.light .entry-amount{color:#4f46e5}
+    .entry-badges{
+      margin-top:2px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:4px;
+      font-size:11px;
+    }
+    .badge-cat{
+      padding:2px 7px;
+      border-radius:999px;
+      background:rgba(59,130,246,.15);
+      color:#bfdbfe;
+    }
+    body.light .badge-cat{
+      background:#dbeafe;
+      color:#1d4ed8;
+    }
+    .entry-note{
+      margin-top:3px;
+      font-size:11px;
+      color:var(--text-dark-muted);
+    }
+    body.light .entry-note{color:var(--text-muted)}
+    .entry-actions{
+      margin-left:8px;
+    }
+    .entry-del{
+      border:none;
+      border-radius:8px;
+      background:rgba(248,113,113,.1);
+      color:#fecaca;
+      padding:5px 7px;
+      font-size:11px;
+      cursor:pointer;
+    }
+    body.light .entry-del{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+    .totals{
+      padding:12px 16px 16px;
+      background:#020617;
+      border-top:1px solid rgba(31,41,55,.9);
+      border-bottom:1px solid rgba(31,41,55,.9);
+    }
+    body.light .totals{
+      background:#f9fafb;
+      border-color:#e5e7eb;
+    }
+    .total-row{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:8px;
+      font-size:13px;
+    }
+    .total-label{color:var(--text-dark-muted)}
+    body.light .total-label{color:var(--text-muted)}
+    .total-value{
+      font-weight:700;
+      color:#a5b4fc;
+    }
+    body.light .total-value{color:#4f46e5}
+    .total-row.week{
+      padding:8px 10px;
+      border-radius:10px;
+      margin-top:4px;
+      background:linear-gradient(135deg,#6366f1 0,#4f46e5 100%);
+      color:#e5e7eb;
+    }
+    .total-row.week .total-label,
+    .total-row.week .total-value{color:#eef2ff}
+    .actions{
+      padding:12px 16px 14px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      background:#020617;
+    }
+    body.light .actions{background:#fff}
+    .btn-ghost{
+      padding:8px 6px;
+      border-radius:10px;
+      border:1px solid rgba(148,163,184,.7);
+      background:transparent;
+      color:#e5e7eb;
+      font-size:12px;
+      cursor:pointer;
+    }
+    body.light .btn-ghost{
+      color:var(--text-main);
+      border-color:#d1d5db;
+    }
+    .btn-danger{
+      border-color:rgba(248,113,113,.7);
+      color:#fecaca;
+    }
+    body.light .btn-danger{
+      color:#b91c1c;
+      border-color:#fca5a5;
+    }
+    .toast{
+      display:none;
+      margin:10px 16px;
+      padding:9px 10px;
+      border-radius:10px;
+      font-size:12px;
+      background:#bbf7d0;
+      color:#166534;
+    }
+    .toast.error{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+    .toast.show{display:block}
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(15,23,42,.8);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:40;
+    }
+    .modal.show{display:flex}
+    .modal-card{
+      width:90%;
+      max-width:360px;
+      background:#020617;
+      border-radius:16px;
+      border:1px solid rgba(148,163,184,.6);
+      padding:18px 18px 16px;
+      color:#e5e7eb;
+    }
+    body.light .modal-card{
+      background:#fff;
+      border-color:#e5e7eb;
+      color:var(--text-main);
+    }
+    .modal-title{font-size:15px;font-weight:600;margin-bottom:8px}
+    .modal-text{font-size:13px;color:var(--text-dark-muted);margin-bottom:14px}
+    body.light .modal-text{color:var(--text-muted)}
+    .modal-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+    @media(max-width:600px){
+      .shell{border-radius:14px}
+      .stats{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body class="dark">
+  <div class="shell">
+    <header class="header">
+      <div class="header-main">
+        <div class="app-title" id="appTitle">💰 المصاريف الأسبوعية</div>
+        <div class="app-sub" id="appSub">تتبع مصروفك ومصروف جيبك بسهولة</div>
+      </div>
+      <div class="header-controls">
+        <button class="chip-btn chip-btn-outline" id="langToggle" onclick="toggleLanguage()">EN</button>
+        <button class="chip-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
+      </div>
+    </header>
+
+    <section class="budget-bar">
+      <div class="budget-label" id="budgetLabel">مصروف الجيب لهذا الأسبوع (جنيه)</div>
+      <div class="budget-row">
+        <input type="number" id="weeklyBudgetInput" min="0" placeholder="مثال: 2000">
+        <button class="pill-btn" onclick="saveBudget()" id="budgetSaveBtn">حفظ</button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <div class="stat-label" id="statDayLabel">اليوم</div>
+        <div class="stat-value" id="quickDayTotal">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" id="statWeekLabel">الأسبوع</div>
+        <div class="stat-value" id="quickWeekTotal">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" id="statAvgLabel">متوسط</div>
+        <div class="stat-value" id="avgPerDay">0</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label" id="statRemainLabel">رصيد متبقٍ</div>
+        <div class="stat-value" id="remainingBalance">0</div>
+      </div>
+    </section>
+
+    <div class="toast" id="toast"></div>
+
+    <section class="days" id="daysContainer"></section>
+
+    <section class="section">
+      <div class="section-title">
+        <span id="addTitle">أضف مصروف جديد</span>
+      </div>
+      <div class="field">
+        <label id="amountLabel">المبلغ (جنيه)</label>
+        <input type="number" id="amount" min="0" step="0.01" placeholder="مثال: 200">
+      </div>
+      <div class="field">
+        <label id="categoryLabel">الفئة</label>
+        <input type="text" id="category" placeholder="اختر أو اكتب...">
+        <div class="presets" id="presets"></div>
+      </div>
+      <div class="field">
+        <label id="noteLabel">ملاحظة (اختياري)</label>
+        <textarea id="note" placeholder="أي تفاصيل إضافية..."></textarea>
+      </div>
+      <div class="btn-row">
+        <button class="btn-main" onclick="addEntry()" id="addBtnText">➕ أضف المصروف</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <span id="todayExpensesTitle">مصاريف اليوم</span>
+        <span class="pill-count"><span id="entryCount">0</span></span>
+      </div>
+      <div id="entriesList"></div>
+    </section>
+
+    <section class="totals">
+      <div class="total-row">
+        <span class="total-label" id="dayTotalLabel">مجموع اليوم:</span>
+        <span class="total-value" id="dayTotal">0</span>
+      </div>
+      <div class="total-row week">
+        <span class="total-label" id="weekTotalLabel">مجموع الأسبوع:</span>
+        <span class="total-value" id="weekTotal">0</span>
+      </div>
+    </section>
+
+    <section class="actions">
+      <button class="btn-ghost" onclick="exportCSV()" id="csvBtn">📥 CSV</button>
+      <button class="btn-ghost" onclick="exportJSON()" id="backupBtn">📤 Backup</button>
+      <button class="btn-ghost" onclick="importJSON()" id="restoreBtn">📋 Restore</button>
+      <button class="btn-ghost btn-danger" onclick="openClearModal()" id="clearBtn">🗑️ Clear</button>
+    </section>
+  </div>
+
+  <div class="modal" id="clearModal">
+    <div class="modal-card">
+      <div class="modal-title" id="clearTitle">تأكيد الحذف</div>
+      <div class="modal-text" id="clearText">
+        هل تريد مسح كل بيانات هذا الأسبوع؟ هذا الإجراء غير قابل للتراجع.
+      </div>
+      <div class="modal-actions">
+        <button class="btn-ghost" onclick="closeClearModal()" id="cancelClear">إلغاء</button>
+        <button class="btn-ghost btn-danger" onclick="clearWeek()" id="confirmClear">نعم، امسح</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DAYS_AR = ["السبت","الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة"];
+    const DAYS_EN = ["Sat","Sun","Mon","Tue","Wed","Thu","Fri"];
+    const CATEGORIES_AR = ["بنزين","سوبرماركت","طعام","أدوية","ملابس","كهرباء","ماء","تأجير","أخرى"];
+    const CATEGORIES_EN = ["Gas","Supermarket","Food","Medicine","Clothes","Electricity","Water","Rent","Other"];
+
+    let currentDayIndex = 0;
+    let data = {};
+    let weeklyBudget = 0;
+    let lang = "ar"; // "ar" or "en"
+
+    function init() {
+      const savedLang = localStorage.getItem("weeklyLang");
+      if (savedLang === "en") lang = "en";
+      const darkPref = localStorage.getItem("weeklyDark");
+      if (darkPref === "light") {
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
+      }
+
+      loadBudget();
+      loadData();
+      renderLanguage();
+      createCategoryPresets();
+      createDayButtons();
+      selectDay(0);
+    }
+
+    function renderLanguage() {
+      const dir = lang === "ar" ? "rtl" : "ltr";
+      document.documentElement.dir = dir;
+      document.documentElement.lang = lang === "ar" ? "ar" : "en";
+
+      const t = (ar,en)=> lang==="ar"?ar:en;
+
+      document.getElementById("appTitle").textContent = t("💰 المصاريف الأسبوعية","💰 Weekly Expenses");
+      document.getElementById("appSub").textContent = t("تتبع مصروفك ومصروف جيبك بسهولة","Track your spending and pocket money easily");
+      document.getElementById("budgetLabel").textContent = t("مصروف الجيب لهذا الأسبوع (جنيه)","Pocket money for this week");
+      document.getElementById("weeklyBudgetInput").placeholder = t("مثال: 2000","e.g. 2000");
+      document.getElementById("budgetSaveBtn").textContent = t("حفظ","Save");
+
+      document.getElementById("statDayLabel").textContent   = t("اليوم","Today");
+      document.getElementById("statWeekLabel").textContent  = t("الأسبوع","Week");
+      document.getElementById("statAvgLabel").textContent   = t("متوسط","Avg");
+      document.getElementById("statRemainLabel").textContent= t("رصيد متبقٍ","Remaining");
+
+      document.getElementById("addTitle").textContent       = t("أضف مصروف جديد","Add new expense");
+      document.getElementById("amountLabel").textContent    = t("المبلغ (جنيه)","Amount");
+      document.getElementById("amount").placeholder         = t("مثال: 200","e.g. 200");
+      document.getElementById("categoryLabel").textContent  = t("الفئة","Category");
+      document.getElementById("category").placeholder       = t("اختر أو اكتب...","Pick or type...");
+      document.getElementById("noteLabel").textContent      = t("ملاحظة (اختياري)","Note (optional)");
+      document.getElementById("note").placeholder           = t("أي تفاصيل إضافية...","Any extra details...");
+      document.getElementById("addBtnText").textContent     = t("➕ أضف المصروف","➕ Add expense");
+      document.getElementById("todayExpensesTitle").textContent=t("مصاريف اليوم","Today expenses");
+
+      document.getElementById("dayTotalLabel").textContent  = t("مجموع اليوم:","Day total:");
+      document.getElementById("weekTotalLabel").textContent = t("مجموع الأسبوع:","Week total:");
+
+      document.getElementById("csvBtn").textContent         = t("📥 CSV","📥 CSV");
+      document.getElementById("backupBtn").textContent      = t("📤 نسخة احتياطية","📤 Backup");
+      document.getElementById("restoreBtn").textContent     = t("📋 استعادة","📋 Restore");
+      document.getElementById("clearBtn").textContent       = t("🗑️ امسح","🗑️ Clear");
+
+      document.getElementById("clearTitle").textContent     = t("تأكيد الحذف","Confirm clear");
+      document.getElementById("clearText").textContent      = t("هل تريد مسح كل بيانات هذا الأسبوع؟ هذا الإجراء غير قابل للتراجع.","Do you want to clear all this week's data? This cannot be undone.");
+      document.getElementById("cancelClear").textContent    = t("إلغاء","Cancel");
+      document.getElementById("confirmClear").textContent   = t("نعم، امسح","Yes, clear");
+
+      document.getElementById("langToggle").textContent     = lang==="ar"?"EN":"AR";
+
+      createCategoryPresets();
+      createDayButtons();
+      refreshUI();
+    }
+
+    function toggleLanguage() {
+      lang = lang==="ar"?"en":"ar";
+      localStorage.setItem("weeklyLang",lang);
+      renderLanguage();
+    }
+
+    function toggleTheme() {
+      if (document.body.classList.contains("dark")) {
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
+        localStorage.setItem("weeklyDark","light");
+        document.getElementById("themeToggle").textContent = "☀️";
+      } else {
+        document.body.classList.remove("light");
+        document.body.classList.add("dark");
+        localStorage.setItem("weeklyDark","dark");
+        document.getElementById("themeToggle").textContent = "🌙";
+      }
+    }
+
+    function loadBudget() {
+      const stored = localStorage.getItem("weeklyBudget");
+      if (stored) {
+        weeklyBudget = parseFloat(stored)||0;
+        document.getElementById("weeklyBudgetInput").value = weeklyBudget || "";
+      }
+    }
+    function saveBudget() {
+      const val = document.getElementById("weeklyBudgetInput").value.trim();
+      if (!val || isNaN(val) || parseFloat(val)<=0) {
+        showToast(lang==="ar"?"أدخل رقم صحيح لمصروف الجيب":"Enter a valid pocket money amount",true);
+        return;
+      }
+      weeklyBudget = parseFloat(val);
+      localStorage.setItem("weeklyBudget",weeklyBudget.toString());
+      showToast(lang==="ar"?"تم حفظ مصروف الجيب للأسبوع":"Pocket money saved for this week");
+      updateTotals();
+    }
+
+    function createCategoryPresets() {
+      const presetContainer = document.getElementById("presets");
+      const cats = lang==="ar"?CATEGORIES_AR:CATEGORIES_EN;
+      presetContainer.innerHTML = cats.map(c=>`<button class="preset-chip" onclick="setCategory('${c}')">${c}</button>`).join("");
+    }
+    function setCategory(c){document.getElementById("category").value=c;document.getElementById("category").focus();}
+
+    function loadData() {
+      const stored = localStorage.getItem("weeklyExpenses");
+      if (stored) data = JSON.parse(stored);
+      else{
+        data={};
+        (lang==="ar"?DAYS_AR:DAYS_EN).forEach((_,i)=>data[i]=[]);
+      }
+    }
+    function saveData(){localStorage.setItem("weeklyExpenses",JSON.stringify(data));}
+
+    function createDayButtons() {
+      const container = document.getElementById("daysContainer");
+      container.innerHTML = "";
+      const days = lang==="ar"?DAYS_AR:DAYS_EN;
+      days.forEach((d,i)=>{
+        const btn = document.createElement("button");
+        btn.className = "day-btn";
+        const count = (data[i]||[]).length;
+        btn.innerHTML = d + (count>0?`<span class="badge">${count}</span>`:"");
+        if (i===currentDayIndex) btn.classList.add("active");
+        btn.onclick = ()=>selectDay(i,btn);
+        container.appendChild(btn);
+      });
+    }
+    function selectDay(index,btn) {
+      currentDayIndex = index;
+      document.querySelectorAll(".day-btn").forEach(b=>b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      else {
+        const all = document.querySelectorAll(".day-btn");
+        if (all[index]) all[index].classList.add("active");
+      }
+      refreshUI();
+    }
+
+    function addEntry() {
+      const amountEl = document.getElementById("amount");
+      const categoryEl = document.getElementById("category");
+      const noteEl = document.getElementById("note");
+      const amount = amountEl.value.trim();
+      const cat = categoryEl.value.trim();
+      const note = noteEl.value.trim();
+
+      if (!amount || isNaN(amount) || parseFloat(amount)<=0) {
+        showToast(lang==="ar"?"أدخل مبلغ صحيح":"Enter a valid amount",true);return;
+      }
+      if (!cat) {
+        showToast(lang==="ar"?"أدخل الفئة":"Enter a category",true);return;
+      }
+      const entry = {id:Date.now(),amount:parseFloat(amount),category:cat,note};
+      if (!data[currentDayIndex]) data[currentDayIndex]=[];
+      data[currentDayIndex].push(entry);
+      saveData();
+      amountEl.value="";categoryEl.value="";noteEl.value="";
+      showToast(lang==="ar"?"تم إضافة المصروف":"Expense added");
+      createDayButtons();
+      refreshUI();
+    }
+
+    function deleteEntry(id) {
+      if (!confirm(lang==="ar"?"هل تريد حذف هذا المصروف؟":"Delete this expense?")) return;
+      data[currentDayIndex]=(data[currentDayIndex]||[]).filter(e=>e.id!==id);
+      saveData();
+      showToast(lang==="ar"?"تم حذف المصروف":"Expense deleted");
+      createDayButtons();
+      refreshUI();
+    }
+
+    function refreshUI(){
+      updateEntriesList();
+      updateTotals();
+    }
+
+    function updateEntriesList(){
+      const list = document.getElementById("entriesList");
+      const entries = data[currentDayIndex] || [];
+      document.getElementById("entryCount").textContent = entries.length;
+      if (!entries.length){
+        list.innerHTML = `<div class="entries-empty">${lang==="ar"?"لا توجد مصاريف لهذا اليوم":"No expenses for today"}</div>`;
+        return;
+      }
+      list.innerHTML = entries.map(e=>`
+        <div class="entry">
+          <div class="entry-main">
+            <div class="entry-amount">${Math.round(e.amount)} </div>
+            <div class="entry-badges">
+              <span class="badge-cat">${e.category}</span>
+            </div>
+            ${e.note?`<div class="entry-note">${e.note}</div>`:""}
+          </div>
+          <div class="entry-actions">
+            <button class="entry-del" onclick="deleteEntry(${e.id})">${lang==="ar"?"حذف":"Delete"}</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateTotals(){
+      const dayEntries = data[currentDayIndex]||[];
+      const dayTotal = dayEntries.reduce((s,e)=>s+e.amount,0);
+
+      let weekTotal=0, activeDays=0;
+      Object.values(data).forEach(arr=>{
+        const sum=arr.reduce((s,e)=>s+e.amount,0);
+        weekTotal+=sum;
+        if(sum>0) activeDays++;
+      });
+      const avg = activeDays?Math.round(weekTotal/activeDays):0;
+
+      document.getElementById("dayTotal").textContent = Math.round(dayTotal);
+      document.getElementById("weekTotal").textContent= Math.round(weekTotal);
+      document.getElementById("quickDayTotal").textContent = Math.round(dayTotal);
+      document.getElementById("quickWeekTotal").textContent= Math.round(weekTotal);
+      document.getElementById("avgPerDay").textContent = avg;
+
+      const remainEl = document.getElementById("remainingBalance");
+      let remaining = 0;
+      if (weeklyBudget>0) remaining = weeklyBudget-weekTotal;
+      remainEl.textContent = Math.round(remaining);
+      remainEl.classList.remove("negative","positive");
+      if (weeklyBudget>0){
+        if(remaining<0){
+          remainEl.classList.add("negative");
+          remainEl.title = lang==="ar"
+            ?`أنت فوق الميزانية بـ ${Math.abs(Math.round(remaining))} جنيه (تحتاج هذا المبلغ من والدك).`
+            :`You exceeded your budget by ${Math.abs(Math.round(remaining))} (you need this from your father).`;
+        }else{
+          remainEl.classList.add("positive");
+          remainEl.title = lang==="ar"
+            ?"هذا هو المبلغ المتبقي من مصروف الجيب."
+            :"This is the remaining pocket money.";
+        }
+      }else{
+        remainEl.title = lang==="ar"
+          ?"لم يتم إدخال مصروف الجيب بعد."
+          :"Pocket money not set yet.";
+      }
+    }
+
+    function showToast(msg,isError=false){
+      const t=document.getElementById("toast");
+      t.textContent=msg;
+      t.className="toast"+(isError?" error":"");
+      t.classList.add("show");
+      setTimeout(()=>t.classList.remove("show"),2500);
+    }
+
+    function exportCSV(){
+      let csv = (lang==="ar"?"اليوم,المبلغ,الفئة,ملاحظة\n":"Day,Amount,Category,Note\n");
+      const days = lang==="ar"?DAYS_AR:DAYS_EN;
+      Object.entries(data).forEach(([i,arr])=>{
+        const dayName = days[i];
+        arr.forEach(e=>{
+          csv += `${dayName},${e.amount},${e.category},"${e.note||""}"\n`;
+        });
+      });
+      const blob = new Blob([csv],{type:"text/csv;charset=utf-8;"});
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);
+      a.download="expenses.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(lang==="ar"?"تم تصدير CSV":"CSV exported");
+    }
+
+    function exportJSON(){
+      const blob = new Blob([JSON.stringify({data,weeklyBudget},null,2)],{type:"application/json"});
+      const a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);
+      a.download="expenses-backup.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast(lang==="ar"?"تم حفظ النسخة الاحتياطية":"Backup saved");
+    }
+
+    function importJSON(){
+      const input=document.createElement("input");
+      input.type="file";
+      input.accept=".json";
+      input.onchange=e=>{
+        const file=e.target.files[0];
+        if(!file)return;
+        const reader=new FileReader();
+        reader.onload=ev=>{
+          try{
+            const obj=JSON.parse(ev.target.result);
+            if(obj.data) data=obj.data;
+            if(obj.weeklyBudget){
+              weeklyBudget=obj.weeklyBudget;
+              localStorage.setItem("weeklyBudget",weeklyBudget.toString());
+              document.getElementById("weeklyBudgetInput").value=weeklyBudget;
+            }
+            saveData();
+            createDayButtons();
+            refreshUI();
+            showToast(lang==="ar"?"تم الاستعادة بنجاح":"Restore successful");
+          }catch{
+            showToast(lang==="ar"?"ملف غير صالح":"Invalid file",true);
+          }
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+    }
+
+    function openClearModal(){document.getElementById("clearModal").classList.add("show");}
+    function closeClearModal(){document.getElementById("clearModal").classList.remove("show");}
+    function clearWeek(){
+      Object.keys(data).forEach(k=>data[k]=[]);
+      saveData();
+      closeClearModal();
+      createDayButtons();
+      refreshUI();
+      showToast(lang==="ar"?"تم مسح الأسبوع":"Week cleared");
+    }
+
+    document.addEventListener("click",e=>{
+      const m=document.getElementById("clearModal");
+      if(e.target===m)closeClearModal();
+    });
+
+    init();
+  </script>
+</body>
+</html>
